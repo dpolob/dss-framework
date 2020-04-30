@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['ok_5fpermission',['ok_permission',['../namespaceafc__dss_1_1authorizations.html#a456167c10374a67314f5440559f9c9de',1,'afc_dss::authorizations']]],
-  ['ok_5fuserpassword',['ok_userpassword',['../namespaceafc__dss_1_1authorizations.html#a9e1279b323d66ac3569522d57f82f49f',1,'afc_dss::authorizations']]]
+  ['post',['post',['../classafc__dss_1_1api__classes_1_1_register.html#a11593c9f7adbcfc368a920e15d005535',1,'afc_dss.api_classes.Register.post()'],['../classafc__dss_1_1api__classes_1_1_start.html#a6f28c9b2bffbc25ed96c633db921d42e',1,'afc_dss.api_classes.Start.post()']]]
 ];

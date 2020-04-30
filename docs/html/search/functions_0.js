@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['check_5fjsonkeys',['check_jsonkeys',['../namespaceafc__dss_1_1json__manipulation.html#ad2d816bf9b8a2a70ccf815e0fe5770b6',1,'afc_dss::json_manipulation']]]
+  ['_5f_5finit_5f_5f',['__init__',['../classafc__dss_1_1api__classes_1_1_entry_point.html#a994b7685975db2db775bb6cc5bfa4c2f',1,'afc_dss::api_classes::EntryPoint']]]
 ];

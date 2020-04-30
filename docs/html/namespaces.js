@@ -1,8 +1,10 @@
 var namespaces =
 [
-    [ "afc_dss", "namespaceafc__dss.html", "namespaceafc__dss" ],
-    [ "authorizations", "namespaceauthorizations.html", "namespaceauthorizations" ],
+    [ "authorizations", null, [
+      [ "py", "namespaceauthorizations_1_1py.html", null ]
+    ] ],
     [ "ClassesAPI", "namespace_classes_a_p_i.html", null ],
     [ "Errors", "namespace_errors.html", null ],
-    [ "json_manipulations", "namespacejson__manipulations.html", null ]
+    [ "json_manipulations", "namespacejson__manipulations.html", null ],
+    [ "main", "namespacemain.html", null ]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['get',['get',['../classafc__dss_1_1classes_1_1_delete.html#a5f47432b9a86a93c94da1285059a9ab9',1,'afc_dss::classes::Delete']]]
+  ['json_5fmanipulations',['json_manipulations',['../namespacejson__manipulations.html',1,'']]],
+  ['jsonkeyswrongexception',['JsonKeysWrongException',['../classafc__dss_1_1errors_1_1_json_keys_wrong_exception.html',1,'afc_dss::errors']]]
 ];

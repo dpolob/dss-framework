@@ -1,37 +1,39 @@
 ## @package Errors
 #  Handles exceptions from code
+
 import logging
+logger = logging.getLogger("app_dss")
 
 ## JsonKeysWrongException class
 #
 #  Handle a exception in case of json schema is not correct
 class JsonKeysWrongException(Exception):
-    logging.debug("[JsonKeysWrongException] : Json schema is not dss compliant")
+    logger.info("[JsonKeysWrongException] : Json schema is not dss compliant")
 
 ## DBInsertionWrongException class
 #
-#  Handle a exception in case of json schema is not correct
+#  Handle a exception if insertion in database is not correct
 class DBInsertionWrongException(Exception):
-    logging.debug("[DBInsertionWrongException] : Cannot insert in database")
+    logger.info("[DBInsertionWrongException] : Cannot insert in database")
 
 ## DBDeletionWrongException class
 #
-#  Handle a exception in case of json schema is not correct
+#  Handle a exception in if deletion in database is not correct
 class DBDeletionWrongException(Exception):
-    logging.debug("[DBDeletionWrongException] : Cannot delete from database")
+    logger.info("[DBDeletionWrongException] : Cannot delete from database")
 
 ## DBListWrongException class
 #
 #  Handle a exception in case of listing not possible
 class DBListWrongException(Exception):
-    logging.debug("[DBListWrongException] : Cannot retrieve list from database")
+    logger.info("[DBListWrongException] : Cannot retrieve list from database")
 
 ## DBAlgorithmNotExistException class
 #
-#  Handle a exception in case of listing not possible
+#  Handle a exception in case an algorithm does not exist
 class DBAlgorithmNotExistException(Exception):
-    logging.debug("[DBAlgorithmNotExistException] : Cannot retrieve list from database")
+    logger.info("[DBAlgorithmNotExistException] : Cannot retrieve list from database")
 
 ## AlgorithmNotReachableException class
 class AlgorithmBadStatusException(Exception):
-    logging.debug("[AlgorithmBadStatusException] : STARTED not sent")
+    logger.info("[AlgorithmBadStatusException] : STARTED not sent")

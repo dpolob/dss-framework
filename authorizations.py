@@ -1,8 +1,17 @@
 ## @package authorizations.py
-#  Functions an decorators to manage user authorization and permits to access to API
+#  Functions and decorators to manage user authorization and permits to access to API
+#
+#  Security is not implemented in the API, therefore any user and password will work
+#  But permission need a correct username: 'admin' or 'user'
+
+import os
+import logging
+logger =logging.getLogger()
 
 from flask import jsonify, request
 from functools import wraps
+from tinydb import TinyDB, Query
+
 
 ## ok_userpassword function
 #
@@ -11,6 +20,7 @@ from functools import wraps
 #  @param permission: string permission needed. Can be 'admin', 'user', 'entrypoint'
 #  @return True: boolean
 def ok_userpassword(username, password):
+    logger.info("User password is correct")
     return True  # no checks
 
 ## ok_permission function
@@ -20,7 +30,11 @@ def ok_userpassword(username, password):
 #  @param user_permission: string permission needed. Can be 'admin', 'user', 'entrypoint'
 #  @return boolean
 def ok_permission(username, user_permission):
-    if username == user_permission: return True
+    if username == get_permission(user_permission):
+        logger.info("Permit granted")
+        return True
+    
+    logger.info("Permit denied. Needed {} but provided {}".format(user_permission, username))
     return False
 
 ## permission_error function
@@ -30,7 +44,8 @@ def permission_error():
     message = {'message': "Permision not correct."}
     resp = jsonify(message)
     resp.status_code = 401
-    resp.headers['WWW-Authenticate'] = 'Basic realm="Main"'
+    resp.headers['Content-Type'] = 'application/json'
+    logger.info("Sent 401 error to host")
     return resp
 
 ## requires_permission decorator
@@ -47,3 +62,18 @@ def requires_permission(permit):
             return f(*args, **kwargs)
         return decorated_permision
     return decorator
+
+## get_permission function
+#
+#  Get the permission required for a route
+#  @param name: string name of the class
+#  @return permit: string required permit
+def get_permission(name: str) -> str:
+    cwd = os.path.abspath(os.path.dirname(__file__))
+    db = TinyDB(cwd + '/db/db.json')
+    table = db.table('permits')
+    query = Query()
+    search = table.search(query.route == name)
+    search = search[0]  # it is a list
+    logger.info("Permit needed to access to {} is {}".format(name, search['permit']))
+    return (search['permit'])

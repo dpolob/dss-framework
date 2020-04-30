@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['filename',['filename',['../namespaceafc__dss_1_1main.html#aa6ed4393169d06c024f20534e29bca6d',1,'afc_dss::main']]],
-  ['format',['format',['../namespaceafc__dss_1_1main.html#a6a3918ccffb45ff19c4a4f2cd24b78e1',1,'afc_dss::main']]]
+  ['get',['get',['../classafc__dss_1_1api__classes_1_1_delete.html#a941550a5350c50e0178b980da2fdde3f',1,'afc_dss.api_classes.Delete.get()'],['../classafc__dss_1_1api__classes_1_1_list.html#a601e1ebe6873b9265bcb9846a079c126',1,'afc_dss.api_classes.List.get()'],['../classafc__dss_1_1api__classes_1_1_status.html#a9be1a1b66a83e184c899bb831d565299',1,'afc_dss.api_classes.Status.get()'],['../classafc__dss_1_1api__classes_1_1_stop.html#a9f47354061a4e2e6a3badf9983dcfdd7',1,'afc_dss.api_classes.Stop.get()']]]
 ];
