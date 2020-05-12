@@ -5,7 +5,7 @@
 
 ## @imports
 import errors
-import logging 
+import logging
 from flask_restful import Resource
 from json_manipulation import check_jsonkeys
 from authorizations import ok_userpassword, requires_permission
@@ -19,6 +19,8 @@ logger = logging.getLogger()
 
 # Enable HTTP Basic Authorization
 auth = HTTPBasicAuth()
+
+DATABASE = './db/db.json'
 
 ## verify_password decorator
 #
@@ -42,7 +44,7 @@ class Register(Resource):
     #  Register a new algorithm inside the TinyDB database
     def post(self):
         try:
-            db = TinyDB('./db/db.json')
+            db = TinyDB(DATABASE)
             
             data = request.get_json()
             if not check_jsonkeys(data, 'register'):
@@ -70,7 +72,7 @@ class Delete(Resource):
     #  Delete an algorithm from the TinyDB database
     def get(self, algorithm_name):
         try:
-            db = TinyDB('./db/db.json')
+            db = TinyDB(DATABASE)
             table= db.table('algorithm_list')  # switch to table
             query = Query()
             if not table.remove(query.algorithm_name == algorithm_name):
@@ -94,7 +96,7 @@ class List(Resource):
     #  List algorithms from the TinyDB database
     def get(self):
         try:
-            db = TinyDB('./db/db.json')
+            db = TinyDB(DATABASE)
             table= db.table('algorithm_list')  # switch to table
             list = table.all()
             if not list:
@@ -118,7 +120,7 @@ class Start(Resource):
     #  Start an algorithm sendind /run_alg command
     def post(self, algorithm_name):
         try:
-            db = TinyDB('./db/db.json')
+            db = TinyDB(DATABASE)
             table= db.table('algorithm_list')  # switch to table
             query = Query()
             result = table.search(query.algorithm_name == algorithm_name)
@@ -160,7 +162,7 @@ class Status(Resource):
     #  Show algorithm status sending /status_alg
     def get(self, algorithm_name):
         try:
-            db = TinyDB('./db/db.json')
+            db = TinyDB(DATABASE)
             table= db.table('algorithm_list')  # switch to table
             query = Query()
             result = table.search(query.algorithm_name == algorithm_name)
@@ -203,7 +205,7 @@ class Stop(Resource):
     #  Stop an algorithm sending stop_alg
     def get(self, algorithm_name):
         try:
-            db = TinyDB('./db/db.json')
+            db = TinyDB(DATABASE)
             table= db.table('algorithm_list')  # switch to table
             query = Query()
             result = table.search(query.algorithm_name == algorithm_name)
