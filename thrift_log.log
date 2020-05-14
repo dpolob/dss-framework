@@ -1,0 +1,13 @@
+INFO:root:[THRIFT SERVER] Serving list [AlgorithmStruct(algorithm_name='waterneeds', id=1, description='algoritmo waterneeds', status=1, url_api='http://ec2-35-181-43-229.eu-west-3.compute.amazonaws.com:5001/api_afc_enc_dss', url_web='poner algo aqui'), AlgorithmStruct(algorithm_name='waterneeds2', id=2, description='algoritmo waterneeds2', status=2, url_api='http://ec2-35-181-43-229.eu-west-3.compute.amazonaws.com:5001/api_afc_enc_dss', url_web='poner algo aqui2')]
+INFO:root:[THRIFT SERVER] Serving list [AlgorithmStruct(algorithm_name='waterneeds', id=1, description='algoritmo waterneeds', status=1, url_api='http://ec2-15-188-119-114.eu-west-3.compute.amazonaws.com:5001/api_afc_enc_dss', url_web='poner algo aqui'), AlgorithmStruct(algorithm_name='waterneeds2', id=2, description='algoritmo waterneeds2', status=2, url_api='http://ec2-35-181-43-229.eu-west-3.compute.amazonaws.com:5001/api_afc_enc_dss', url_web='poner algo aqui2')]
+INFO:root:[THRIFT SERVER][DBListWrongException, errors.DBAlgorithmUpdateException, Exception]Failure in getting list or list is empty
+INFO:root:[THRIFT SERVER] Sending command to algorithm in http://ec2-15-188-119-114.eu-west-3.compute.amazonaws.com:5001/api_afc_enc_dss with config {'con1': 'ccc', 'con2': 'fff'}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-15-188-119-114.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-15-188-119-114.eu-west-3.compute.amazonaws.com:5001 "POST /api_afc_enc_dss/run_alg HTTP/1.1" 500 None
+INFO:root:[THRIFT SERVER] Sending command to algorithm in http://ec2-15-188-119-114.eu-west-3.compute.amazonaws.com:5001/api_afc_enc_dss with config {'con1': 'ccc', 'con2': 'fff'}
+INFO:root:[THRIFT SERVER] Sending command to algorithm in http://ec2-15-188-119-114.eu-west-3.compute.amazonaws.com:5001/api_afc_enc_dss with config {}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-15-188-119-114.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-15-188-119-114.eu-west-3.compute.amazonaws.com:5001 "POST /api_afc_enc_dss/run_alg HTTP/1.1" 200 60
+INFO:root:[RUN_ALG]Algorithm status: STARTED. Info: {'OK': 'Algorithm started'}
+INFO:root:[THRIFT SERVER] Algorithm send STARTED <class 'list'>
+INFO:root:[THRIFT SERVER] Algorithm status started

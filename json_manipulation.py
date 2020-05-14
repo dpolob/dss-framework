@@ -27,3 +27,24 @@ def check_jsonkeys(data_key, reference):
         return True
     else:
         return False
+
+# change status in database
+def change_status(name, new_status, table):
+    query = Query()
+    return table.update({'status' : new_status}, query.algorithm_name == name)
+
+
+
+class StatusEnum:
+    STARTED = 1
+    STOPPED = 2
+
+    _VALUES_TO_NAMES = {
+        1: "STARTED",
+        2: "STOPPED",
+    }
+
+    _NAMES_TO_VALUES = {
+        "STARTED": 1,
+        "STOPPED": 2,
+    }

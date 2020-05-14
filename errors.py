@@ -2,7 +2,7 @@
 #  Handles exceptions from code
 
 import logging
-logger = logging.getLogger("app_dss")
+logger = logging.getLogger()
 
 ## JsonKeysWrongException class
 #
@@ -37,3 +37,7 @@ class DBAlgorithmNotExistException(Exception):
 ## AlgorithmNotReachableException class
 class AlgorithmBadStatusException(Exception):
     logger.info("[AlgorithmBadStatusException] : STARTED not sent")
+
+## DBAlgorithmUpdateException class
+class DBAlgorithmUpdateException(Exception):
+    logger.info("[DBAlgorithmUpdateException] : update not done")
