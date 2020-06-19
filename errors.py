@@ -41,3 +41,7 @@ class AlgorithmBadStatusException(Exception):
 ## DBAlgorithmUpdateException class
 class DBAlgorithmUpdateException(Exception):
     logger.info("[DBAlgorithmUpdateException] : update not done")
+
+##  class DataTypeMissingException
+class DataTypeMissingException(Exception):
+    logger.info("[DataTypeMissingException] : data type does not exist")

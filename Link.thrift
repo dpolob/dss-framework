@@ -6,7 +6,7 @@ enum StatusEnum {
     STOPPED = 2
 }
 
-enum ReplyEnun {
+enum ReplyEnum {
     OK = 1,
     ERROR = 2
 }
@@ -29,5 +29,5 @@ struct AlgorithmStruct {
 service mmtLink{
     string ping(),
     list<AlgorithmStruct> getList(),
-    ReplyEnun start(1: i32 id),
+    ReplyEnum start(1: i32 id),
 }

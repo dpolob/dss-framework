@@ -29,9 +29,9 @@ def check_jsonkeys(data_key, reference):
         return False
 
 # change status in database
-def change_status(name, new_status, table):
+def change_status(id, new_status, table):
     query = Query()
-    return table.update({'status' : new_status}, query.algorithm_name == name)
+    return table.update({'status' : new_status}, query.id == id)
 
 
 

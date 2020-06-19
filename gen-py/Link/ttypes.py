@@ -31,7 +31,7 @@ class StatusEnum(object):
     }
 
 
-class ReplyEnun(object):
+class ReplyEnum(object):
     OK = 1
     ERROR = 2
 

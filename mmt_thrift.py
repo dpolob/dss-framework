@@ -80,7 +80,7 @@ class MmtLinkHandler:
                 raise errors.DBAlgorithmUpdateException()
 
             logger.info("[THRIFT SERVER] Algorithm status started")
-            return ttypes.ReplyEnun.OK
+            return ttypes.ReplyEnum.OK
 
             logger.info("[THRIFT SERVER] Algorith {}".format(list))
             return list
@@ -88,7 +88,7 @@ class MmtLinkHandler:
         except (errors.DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception):
             logger.info("[THRIFT SERVER][DBListWrongException, errors.DBAlgorithmUpdateException, Exception]" \
                         "Failure in getting list or list is empty")
-            return ttypes.ReplyEnun.ERROR
+            return ttypes.ReplyEnum.ERROR
 
 # run thrift server
 handler = MmtLinkHandler()

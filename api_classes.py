@@ -49,7 +49,7 @@ class Register(Resource):
             db = TinyDB(DATABASE)
             
             data = request.get_json()
-            if not check_jsonkeys(data, 'Register'):
+            if not check_jsonkeys(data, 'register'):
                 raise errors.JsonKeysWrongException()
             
             # add status as stopped
@@ -71,8 +71,8 @@ class Register(Resource):
             if table.insert(data) < 0:
                 raise errors.DBInsertionWrongException()
             
-            logger.info("[Register API] Registration successful. Code 200 sent")
-            return Response("Registration sucessful", status=200, mimetype='text/plain')
+            logger.info("[Register API] Registration successful. Algorithm name: {} Id: {} Code 200 sent".format(data['algorithm_name'], data['id']))
+            return Response("Registration sucessful with id {}".format(data['id']), status=200, mimetype='text/plain')
         
         except (errors.JsonKeysWrongException, errors.DBInsertionWrongException, Exception):
             logger.info("[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent")
@@ -87,19 +87,19 @@ class Delete(Resource):
     @requires_permission("Delete")  # check permission
     ## Get functionhon
     #  Delete an algorithm from the TinyDB database
-    def get(self, algorithm_name):
+    def get(self, algorithm_id):
         try:
             db = TinyDB(DATABASE)
             table= db.table('algorithm_list')  # switch to table
             query = Query()
-            if not table.remove(query.algorithm_name == algorithm_name):
+            if not table.remove(query.id == algorithm_id):
                 raise errors.DBDeletionWrongException()
             
             logger.info("[Delete API] Deletion sucessful. Code 200 sent")
             return Response("Deletion sucessful", status=200, mimetype='text/plain')
         
         except (errors.DBDeletionWrongException, Exception):
-            logger.info("[Delete API][DBDeletionWrongException] Failure in deletion {} do not exist. Code 500 sent".format(algorithm_name))
+            logger.info("[Delete API][DBDeletionWrongException] Failure in deletion {} do not exist. Code 500 sent".format(algorithm_id))
             return Response("Failure in deletion", status=500, mimetype='text/plain')
 
 ## List class
@@ -118,7 +118,7 @@ class List(Resource):
             list = table.all()
             if not list:
                 raise errors.DBListWrongException()
-            
+
             logger.info("[List API] Serving list {}. Code 200 sent".format(list) )
             return Response(json.dumps(list), status=200, mimetype='application/json')
         
@@ -135,12 +135,12 @@ class Start(Resource):
     @requires_permission("Start")  # check permission
     ## Post function
     #  Start an algorithm sendind /run_alg command
-    def get(self, algorithm_name):
+    def get(self, algorithm_id):
         try:
             db = TinyDB(DATABASE)
             table= db.table('algorithm_list')  # switch to table
             query = Query()
-            result = table.search(query.algorithm_name == algorithm_name)
+            result = table.search(query.id == algorithm_id)
             if not result:
                 raise errors.DBAlgorithmNotExistException()
  
@@ -149,15 +149,17 @@ class Start(Resource):
                         )
 
             # convey data to algorithm through /run_alg
-            algorithm.run_alg()
-            logger.info("[Start API] Algorithm started. Code 200 sent")
+            # as user is using API requestId it is fake
+            # MMT wil provide a correct one
+            algorithm.run_alg(26120)
+            logger.info("[Start API] Algorithm id {} started. Code 200 sent".format(algorithm_id))
 
             # change status in database
-            if not change_status(name=algorithm_name, new_status=StatusEnum.STARTED, table=table):
+            if not change_status(id=algorithm_id, new_status=StatusEnum.STARTED, table=table):
                 raise errors.DBAlgorithmUpdateException()
 
             logger.info("[Start API] Algorithm status updated")
-            return Response("Algorithm started", status=200, mimetype='text/plain')
+            return Response("Algorithm id {} started".format(algorithm_id), status=200, mimetype='text/plain')
 
         except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError):
             logger.info("[Start API][requests.exceptions.HTTPError, requests.exceptions.ConnectionError]" \
@@ -183,7 +185,7 @@ class Update(Resource):
     @requires_permission("Update")  # check permission
     ## Post function
     #  Update algorithm's config
-    def post(self, algorithm_name):
+    def post(self, algorithm_id):
         try:
             data = request.get_json()
             if not data:
@@ -192,14 +194,14 @@ class Update(Resource):
             db = TinyDB(DATABASE)
             table= db.table('algorithm_list')  # switch to table
             query = Query()
-            result = table.search(query.algorithm_name == algorithm_name)
+            result = table.search(query.id == algorithm_id)
             if not result:
                 raise errors.DBAlgorithmNotExistException()
             # check json keys
-            if not check_jsonkeys(data, 'Register'):
+            if not check_jsonkeys(data, 'update'):
                 raise errors.JsonKeysWrongException()
 
-            if not table.update({"config": request.get_json['config']}, query.algorithm_name == algorithm_name):
+            if not table.update({"config": request.get_json['config']}, query.id == algorithm_id):
                 raise errors.DBAlgorithmUpdateException()
             
             logger.info("[Update API] Algorithm config updated")
@@ -217,7 +219,7 @@ class Update(Resource):
         except (errors.DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception):
             logger.info("[Update API][DBAlgorithmNotExistException, Exception] \
                         Failure in DSS to update algorithm or algorithm do not exist. Code 500 sent")
-            return Response("Failure in DSS to update algorithm or algorithm do not exist", status=500, mimetype='text/plain')
+            return Response("Failure in DSS to update algorithm or algorithm do not exist", status=501, mimetype='text/plain')
 
 ## Status class
 #
@@ -228,12 +230,12 @@ class Status(Resource):
     @requires_permission("Status")  # check permission
     ## Get function
     #  Show algorithm status sending /status_alg
-    def get(self, algorithm_name):
+    def get(self, algorithm_id):
         try:
             db = TinyDB(DATABASE)
             table= db.table('algorithm_list')  # switch to table
             query = Query()
-            result = table.search(query.algorithm_name == algorithm_name)
+            result = table.search(query.id == algorithm_id)
             if not result:
                 raise errors.DBAlgorithmNotExistException()
  
@@ -247,7 +249,7 @@ class Status(Resource):
             if not response["status"] in ("STARTED", "STOPPED"):
                 raise errors.AlgorithmBadStatusException()
             # update status
-            if not change_status(name=algorithm_name, new_status=response["status"], table=table):
+            if not change_status(id=algorithm_id, new_status=response["status"], table=table):
                 raise errors.DBAlgorithmUpdateException()
 
             return Response(json.dumps(response), status=200, mimetype='application/json')
@@ -276,12 +278,12 @@ class Stop(Resource):
     @requires_permission("Stop")  # check permission
     ## Get function
     #  Stop an algorithm sending stop_alg
-    def get(self, algorithm_name):
+    def get(self, algorithm_id):
         try:
             db = TinyDB(DATABASE)
             table= db.table('algorithm_list')  # switch to table
             query = Query()
-            result = table.search(query.algorithm_name == algorithm_name)
+            result = table.search(query.id == algorithm_id)
             if not result:
                 raise errors.DBAlgorithmNotExistException()
  
@@ -322,9 +324,11 @@ class EntryPoint():
     
     ## run_alg function
     #  Implement run_alg query to the algorithm 
-    def run_alg(self):
+    def run_alg(self, request_id):
         response = requests.post(self.algorithm_url + "/run_alg",
-                                data=json.dumps(dict({"config" :self.algorithm_config})),
+                                data=json.dumps(dict({
+                                    "config" :self.algorithm_config,
+                                    "request_id" :request_id })),
                                 headers={"Content-Type": "application/json"},
                                 auth= ('entrypoint','fakepass'),
                                 timeout = 3.0
@@ -384,3 +388,32 @@ class EntryPoint():
         
         logger.info("[STATUS_ALG]Algorithm status: {}. Info: {}".format(data_from_alg['status'], data_from_alg['msg']))
         return data_from_alg
+
+class Response(Resource):
+
+    ## Post function
+    #  Register a new algorithm inside the TinyDB database
+    def post(self):
+        try:
+            data = request.get_json()
+            if not check_jsonkeys(data, 'response'):
+                raise errors.JsonKeysWrongException()
+            
+            if data['data_type'] not in ("number", "boolean", "string", "position"):
+                raise errors.DataTypeMissingException()
+            
+            # TODO
+            # convey to MMT format 
+            # convey_MMT(data['data'], data['data_type'], data['request_id'])
+            
+            logger.info("[Response API] Data {} sent to MMT. Code 200 sent".format(data['data']))
+            return Response("Data sent to MMT", status=200, mimetype='text/plain')
+        
+        except (errors.DataTypeMissingException):
+            logger.info("[Response API][DataTypeMissingException] Data_type does not exist. Code 501 sent")
+            return Response("Failure in response of algorithm. Check datatypes.", status=501, mimetype='text/plain')           
+
+        except (errors.JsonKeysWrongException, Exception):
+            logger.info("[Response API][JsonKeysWrongException] Failure in response of algorithm. Check json. Code 500 sent")
+            return Response("Failure in response of algorithm. Check json.", status=500, mimetype='text/plain')
+
