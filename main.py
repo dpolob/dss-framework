@@ -9,6 +9,7 @@
 import os
 import sys
 import logging  # logger
+import globals
 
 
 from flask import Flask
@@ -18,21 +19,23 @@ from flask_restful import Api
 #  as /flask/cly.py
 cwd = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(cwd)
-from api_classes import Register, Delete, List, Start, Stop, Status
+from api_classes import Register, Delete, List, Start, Stop, Status, Update, Response
 
 app = Flask(__name__)
 
 # routes configuration 
 api = Api(app, prefix='/')
 api.add_resource(Register, '/register')
-api.add_resource(Delete, '/delete/<string:algorithm_name>')
+api.add_resource(Delete, '/delete/<string:algorithm_id>')
 api.add_resource(List, '/list')
-api.add_resource(Start, '/start/<string:algorithm_name>')
-api.add_resource(Stop, '/stop/<string:algorithm_name>')
-api.add_resource(Status, '/status/<string:algorithm_name>')
+api.add_resource(Start, '/start/<string:algorithm_id>')
+api.add_resource(Stop, '/stop/<string:algorithm_id>')
+api.add_resource(Status, '/status/<string:algorithm_id>')
+api.add_resource(Update, '/update/<string:algorithm_id>')
+api.add_resource(Response, '/response')
 
 # setting up logger
-logging.basicConfig()
+logging.basicConfig(filename="dss_log.log", filemode='a')
 logger =logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
@@ -44,4 +47,3 @@ logger.info("[DSS] Execution started")
 #app.run(port=5000, debug=True)
 
 ## TO RUN WITH GUNICORN: gunicorn --bind 0.0.0.0:5000 main:app
-
