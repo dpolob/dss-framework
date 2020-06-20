@@ -3,6 +3,7 @@
 
 from tinydb import TinyDB, Query
 import os
+import globals
 
 ## check_jsonkeys function
 #  Check if the keys of a json are according to defined keys
@@ -13,7 +14,7 @@ def check_jsonkeys(data_key, reference):
     
     # avoid hardcoded paths
     cwd = os.path.abspath(os.path.dirname(__file__))
-    db = TinyDB(cwd + '/db/db.json')
+    db = TinyDB(globals.DATABASE)
     table = db.table('json_keys')
     query = Query()
     search = table.search(query.route == reference)
@@ -21,9 +22,12 @@ def check_jsonkeys(data_key, reference):
     keys = search['keys']
     keys.sort()
 
+
     data_keys = list(data_key)
     data_keys.sort()
+
     if keys == data_keys:
+
         return True
     else:
         return False

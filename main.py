@@ -19,7 +19,7 @@ from flask_restful import Api
 #  as /flask/cly.py
 cwd = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(cwd)
-from api_classes import Register, Delete, List, Start, Stop, Status, Update, Response
+from api_classes import Register, Delete, List, Start, Stop, Status, Update, ConveyMMT
 
 app = Flask(__name__)
 
@@ -32,7 +32,7 @@ api.add_resource(Start, '/start/<string:algorithm_id>')
 api.add_resource(Stop, '/stop/<string:algorithm_id>')
 api.add_resource(Status, '/status/<string:algorithm_id>')
 api.add_resource(Update, '/update/<string:algorithm_id>')
-api.add_resource(Response, '/response')
+api.add_resource(ConveyMMT, '/conveymmt')
 
 # setting up logger
 logging.basicConfig(filename="dss_log.log", filemode='a')
@@ -44,6 +44,6 @@ logger.info("[DSS] Execution started")
 #TODO check if bd exists
 
 ## TO RUN FROM FLASH: python3 main.py
-#app.run(port=5000, debug=True)
+app.run(host='0.0.0.0', port=5000, debug=True)
 
 ## TO RUN WITH GUNICORN: gunicorn --bind 0.0.0.0:5000 main:app

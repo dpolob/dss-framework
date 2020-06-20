@@ -2,3 +2,798 @@ INFO:root:[DSS] Execution started
 INFO:root:[DSS] Execution started
 INFO:root:[DSS] Execution started
 INFO:root:[DSS] Execution started
+INFO:root:[DSS] Execution started
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+ERROR:main:Exception on /register [POST]
+Traceback (most recent call last):
+  File "/afc_dss/api_classes.py", line 55, in post
+    raise errors.JsonKeysWrongException()
+errors.JsonKeysWrongException
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask_restful/__init__.py", line 468, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask_restful/__init__.py", line 583, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask_httpauth.py", line 105, in decorated
+    return f(*args, **kwargs)
+  File "/afc_dss/authorizations.py", line 62, in decorated_permision
+    return f(*args, **kwargs)
+  File "/afc_dss/api_classes.py", line 81, in post
+    return Response("Failure in registration", status=500, mimetype='text/plain')
+TypeError: object() takes no parameters
+INFO:root:[DSS] Execution started
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+ERROR:main:Exception on /register [POST]
+Traceback (most recent call last):
+  File "/afc_dss/api_classes.py", line 69, in post
+    if 'url_web' not in list(data.keys()):
+TypeError: 'list' object is not callable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask_restful/__init__.py", line 468, in wrapper
+    resp = resource(*args, **kwargs)
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask/views.py", line 89, in view
+    return self.dispatch_request(*args, **kwargs)
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask_restful/__init__.py", line 583, in dispatch_request
+    resp = meth(*args, **kwargs)
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/flask_httpauth.py", line 105, in decorated
+    return f(*args, **kwargs)
+  File "/afc_dss/authorizations.py", line 62, in decorated_permision
+    return f(*args, **kwargs)
+  File "/afc_dss/api_classes.py", line 81, in post
+    return Response("Failure in registration", status=500, mimetype='text/plain')
+TypeError: object() takes no parameters
+INFO:root:[DSS] Execution started
+INFO:root:[DSS] Execution started
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 124-418-019
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [19/Jun/2020 22:07:16] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 124-418-019
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [19/Jun/2020 22:11:15] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 124-418-019
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 124-418-019
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [19/Jun/2020 22:15:32] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 124-418-019
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [19/Jun/2020 22:18:36] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 124-418-019
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [19/Jun/2020 22:20:24] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 124-418-019
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [19/Jun/2020 22:21:02] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:11:00] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:11:59] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:13:28] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API] Registration successful. Algorithm name: pepito Id: 0 Code 200 sent
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:15:52] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API] Registration successful. Algorithm name: pepito Id: 2 Code 200 sent
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:17:21] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API] Registration successful. Algorithm name: pepito Id: 3 Code 200 sent
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:18:37] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:19:40] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:21:40] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:24:45] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:25:18] "[37mPOST /register HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:30:48] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:31:52] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:33:00] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:34:32] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:35:38] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:36:37] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:37:06] "[31m[1mPOST /list HTTP/1.1[0m" 405 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit denied. Needed List but provided admin
+INFO:root:Sent 401 error to host
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:37:17] "[31m[1mGET /list HTTP/1.1[0m" 401 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'algorithm_name': 'pepito', 'description': 'algoritmo de prueba', 'url_api': 'http://fake_api', 'url_web': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'algorithm_name': 'pepito', 'description': 'algoritmo de prueba', 'url_api': 'http://fake_api', 'url_web': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 2}, {'algorithm_name': 'pepito', 'description': 'algoritmo de prueba', 'url_api': 'http://fake_api', 'url_web': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 3}, {'algorithm_name': 'pepito', 'description': 'algoritmo de prueba', 'url_api': 'http://fake_api', 'url_web': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 4}]. Code 200 sent
+INFO:root:[List API][DBListWrongException] Failure in getting list or list is empty
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:37:33] "[35m[1mGET /list HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:41:22] "[37mPOST /register HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:43:57] "[37mPOST /register HTTP/1.1[0m" 200 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:45:48] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:46:24] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:57:06] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:57:23] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:57:57] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:58:08] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 07:58:39] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:02:01] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[DSS] Execution started
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:04:39] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:root:[DSS] Execution started
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Detected change in '/afc_dss/main.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5010/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:07:34] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:09:40] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:10:10] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:10:37] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:13:37] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:16:43] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:19:40] "[37mPOST /register HTTP/1.1[0m" 200 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:23:32] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:24:01] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:26:25] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:26:43] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:28:48] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/json_manipulation.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:29:41] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/json_manipulation.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:30:22] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/json_manipulation.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:31:10] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/json_manipulation.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:34:15] "[35m[1mPOST /register HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:39:52] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:41:46] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:42:24] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:43:07] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/main.py', reloading
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:45:39] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:46:03] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:46:31] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:47:26] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API] Registration successful. Algorithm name: pepito Id: 2 Code 200 sent
+INFO:root:[Register API][JsonKeysWrongException] Failure in registration. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:49:46] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[Register API] Registration successful. Algorithm name: pepito Id: 3 Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:50:59] "[37mPOST /register HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API] Insetion in data base correct
+INFO:root:[Register API] Registration successful. Algorithm name: pepito Id: 4 Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:52:59] "[37mPOST /register HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API] Insetion in data base correct
+INFO:root:[Register API] Registration successful. Algorithm name: pepito Id: 5 Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 08:56:14] "[37mPOST /register HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API] Insetion in data base correct
+INFO:root:[Register API] Registration successful. Algorithm name: pepito Id: 54365 Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:02:21] "[37mPOST /register HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:04:03] "[33mGET /list HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/afc_dss/main.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API][DBListWrongException] Failure in getting list or list is empty
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:04:27] "[35m[1mGET /list HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 2}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 3}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 4}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 5}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 54365}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:05:09] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Delete is admin
+INFO:root:Permit denied. Needed Delete but provided user
+INFO:root:Sent 401 error to host
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:08:06] "[31m[1mGET /delete/54365 HTTP/1.1[0m" 401 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Delete is admin
+INFO:root:Permit granted
+INFO:root:[Delete API][DBDeletionWrongException] Failure in deletion id 54365 do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:08:18] "[35m[1mGET /delete/54365 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Delete is admin
+INFO:root:Permit granted
+INFO:root:[Delete API][DBDeletionWrongException] Failure in deletion id 1 do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:11:38] "[35m[1mGET /delete/1 HTTP/1.1[0m" 500 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Delete is admin
+INFO:root:Permit granted
+INFO:root:[Delete API][DBDeletionWrongException] Failure in deletion id 2 do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:12:08] "[35m[1mGET /delete/2 HTTP/1.1[0m" 500 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 4}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 5}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 54365}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:16:47] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Delete is admin
+INFO:root:Permit granted
+INFO:root:[Delete API][DBDeletionWrongException] Failure in deletion id 4 do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:16:58] "[35m[1mGET /delete/4 HTTP/1.1[0m" 500 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 4}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 5}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 54365}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:17:04] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Delete is admin
+INFO:root:Permit granted
+INFO:root:[Delete API] Deletion sucessful. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:19:01] "[37mGET /delete/4 HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 5}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 54365}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:19:16] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Delete is admin
+INFO:root:Permit granted
+INFO:root:[Delete API] Deletion sucessful. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 09:19:32] "[37mGET /delete/54365 HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 5}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 10:03:39] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/main.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Update is user
+INFO:root:Permit granted
+INFO:root:[Update API][DBAlgorithmNotExistException, Exception]                         Failure in DSS to update algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 10:08:58] "[35m[1mPOST /update/5 HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Update is user
+INFO:root:Permit granted
+INFO:root:[Update API][DBAlgorithmNotExistException, Exception]                         Failure in DSS to update algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 10:10:02] "[35m[1mPOST /update/5 HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Update is user
+INFO:root:Permit granted
+INFO:root:[Update API][DBAlgorithmNotExistException, Exception]                         Failure in DSS to update algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 10:10:30] "[35m[1mPOST /update/5 HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Update is user
+INFO:root:Permit granted
+INFO:root:[Update API][DBAlgorithmNotExistException, Exception]                         Failure in DSS to update algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 10:11:24] "[35m[1mPOST /update/5 HTTP/1.1[0m" 501 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Update is user
+INFO:root:Permit granted
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 10:14:10] "[35m[1mPOST /update/5 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Update is user
+INFO:root:Permit granted
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 10:17:43] "[35m[1mPOST /update/5 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Update is user
+INFO:root:Permit granted
+INFO:root:[Update API] Algorithm config updated
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 10:18:50] "[37mPOST /update/5 HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {'param1': 10, 'param2': 20}, 'status': 2, 'id': 5}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 10:19:01] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
