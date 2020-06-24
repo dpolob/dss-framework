@@ -4,7 +4,6 @@
 from tinydb import TinyDB, Query
 import os
 import globals
-import 
 
 ## check_jsonkeys function
 #  Check if the keys of a json are according to defined keys
