@@ -4,6 +4,7 @@
 from tinydb import TinyDB, Query
 import os
 import globals
+import 
 
 ## check_jsonkeys function
 #  Check if the keys of a json are according to defined keys
@@ -35,8 +36,10 @@ def check_jsonkeys(data_key, reference):
 # change status in database
 def change_status(id, new_status, table):
     query = Query()
-    a = table.update({'status' : new_status}, query.id == id)
-    return a
+    if new_status == 'STARTED':
+        return table.update({'status' : StatusEnum.STARTED}, query.id == id)
+    else:
+        return table.update({'status' : StatusEnum.STOPPED}, query.id == id)
 
 
 class StatusEnum:
