@@ -35,8 +35,8 @@ def check_jsonkeys(data_key, reference):
 # change status in database
 def change_status(id, new_status, table):
     query = Query()
-    return table.update({'status' : new_status}, query.id == id)
-
+    a = table.update({'status' : new_status}, query.id == id)
+    return a
 
 
 class StatusEnum:

@@ -1,0 +1,15 @@
+# dockerfile for dss-framework
+
+FROM python:3.6.10-slim-buster
+
+COPY . /afc_dss
+# empty database
+#COPY ./db/empty_db.json /afc_dss/db.json
+
+RUN apt-get update
+RUN apt-get install -y git
+RUN apt-get install -y vim
+
+WORKDIR /afc_dss
+RUN pip3 install -r requeriments.txt
+CMD python3 main.py

@@ -35,7 +35,7 @@ api.add_resource(Update, '/update/<string:algorithm_id>')
 api.add_resource(ConveyMMT, '/conveymmt')
 
 # setting up logger
-logging.basicConfig(filename="dss_log.log", filemode='a')
+logging.basicConfig(filename="dss_log.log", filemode='w')
 logger =logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
@@ -44,6 +44,6 @@ logger.info("[DSS] Execution started")
 #TODO check if bd exists
 
 ## TO RUN FROM FLASH: python3 main.py
-app.run(host='0.0.0.0', port=5000, debug=True)
+app.run(host='0.0.0.0', port=globals.PORT, debug=True)
 
 ## TO RUN WITH GUNICORN: gunicorn --bind 0.0.0.0:5000 main:app

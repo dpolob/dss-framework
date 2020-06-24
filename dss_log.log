@@ -797,3 +797,449 @@ INFO:werkzeug: * Restarting with stat
 INFO:root:[DSS] Execution started
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {'param1': 10, 'param2': 20}, 'status': 2, 'id': 5}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 15:27:49] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Register is admin
+INFO:root:Permit granted
+INFO:root:[Register API] Insetion in data base correct
+INFO:root:[Register API] Registration successful. Algorithm name: encore_dss Id: 40492 Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 15:28:56] "[37mPOST /register HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 15:29:44] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {'param1': 10, 'param2': 20}, 'status': 2, 'id': 5}, {'name': 'encore_dss', 'description': 'water needs', 'urlapi': 'http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101', 'urlweb': 'https://app.swaggerhub.com/apis/dpolob/api_afc_enc_dss/2.0.0-oas3', 'config': {'status': 'START', 'frequency': 60, 'error': {}, 'flask_port': 5101, 'water': {'min': 12, 'max': 25}, 'soil': {'sand': 45, 'clay': 20, 'lime': 35, 'gross': 60}, 'last_check': 0, 'url_cesens': 'https://app.cesens.com', 'login': {'nombre': 'admin', 'clave': '98b4t875'}, 'station_id': '2703', 'metrics': {'Temp': 1, 'RH': 6, 'Solar': 21, 'Soil': 30}, 'afc_db_store': {'url': 'http://torcos.etsist.upm.es:9216/store/measures', 'resourceId': 'urn:afc:AS04:waterManagement:ENC:algorithm:afc_dss_enc_water', 'sequence_number': 1, 'location': {'latitude': 41.331535, 'longitude': -4.99383, 'altitude': 709}, 'observedProperty': 'irrigation', 'uom': 'http://qudt.org/vocab/unit/MiliM'}}, 'status': 2, 'id': 40492}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 15:30:14] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {'param1': 10, 'param2': 20}, 'status': 2, 'id': 5}, {'name': 'encore_dss', 'description': 'water needs', 'urlapi': 'http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101', 'urlweb': 'https://app.swaggerhub.com/apis/dpolob/api_afc_enc_dss/2.0.0-oas3', 'config': {'status': 'START', 'frequency': 60, 'error': {}, 'flask_port': 5101, 'water': {'min': 12, 'max': 25}, 'soil': {'sand': 45, 'clay': 20, 'lime': 35, 'gross': 60}, 'last_check': 0, 'url_cesens': 'https://app.cesens.com', 'login': {'nombre': 'admin', 'clave': '98b4t875'}, 'station_id': '2703', 'metrics': {'Temp': 1, 'RH': 6, 'Solar': 21, 'Soil': 30}, 'afc_db_store': {'url': 'http://torcos.etsist.upm.es:9216/store/measures', 'resourceId': 'urn:afc:AS04:waterManagement:ENC:algorithm:afc_dss_enc_water', 'sequence_number': 1, 'location': {'latitude': 41.331535, 'longitude': -4.99383, 'altitude': 709}, 'observedProperty': 'irrigation', 'uom': 'http://qudt.org/vocab/unit/MiliM'}}, 'status': 2, 'id': 40492}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 15:37:57] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 15:38:33] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 15:40:29] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 15:41:19] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 15:43:30] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:root:[Start API][UncaughtException] <class 'Exception'>
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 15:44:53] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:werkzeug:127.0.0.1 - - [20/Jun/2020 15:45:39] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/globals.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 500 None
+INFO:werkzeug:127.0.0.1 - - [23/Jun/2020 19:09:29] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {'param1': 10, 'param2': 20}, 'status': 2, 'id': 5}, {'name': 'encore_dss', 'description': 'water needs', 'urlapi': 'http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101', 'urlweb': 'https://app.swaggerhub.com/apis/dpolob/api_afc_enc_dss/2.0.0-oas3', 'config': {'status': 'START', 'frequency': 60, 'error': {}, 'flask_port': 5101, 'water': {'min': 12, 'max': 25}, 'soil': {'sand': 45, 'clay': 20, 'lime': 35, 'gross': 60}, 'last_check': 0, 'url_cesens': 'https://app.cesens.com', 'login': {'nombre': 'admin', 'clave': '98b4t875'}, 'station_id': '2703', 'metrics': {'Temp': 1, 'RH': 6, 'Solar': 21, 'Soil': 30}, 'afc_db_store': {'url': 'http://torcos.etsist.upm.es:9216/store/measures', 'resourceId': 'urn:afc:AS04:waterManagement:ENC:algorithm:afc_dss_enc_water', 'sequence_number': 1, 'location': {'latitude': 41.331535, 'longitude': -4.99383, 'altitude': 709}, 'observedProperty': 'irrigation', 'uom': 'http://qudt.org/vocab/unit/MiliM'}}, 'status': 2, 'id': 40492}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [23/Jun/2020 19:11:54] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 500 None
+INFO:root:[Start API][requests.exceptions.HTTPError, requests.exceptions.ConnectionError]Algorithm not reachable in http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101. Code 501 sent
+INFO:werkzeug:127.0.0.1 - - [23/Jun/2020 19:14:18] "[35m[1mGET /start/40492 HTTP/1.1[0m" 501 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {'param1': 10, 'param2': 20}, 'status': 2, 'id': 5}, {'name': 'encore_dss', 'description': 'water needs', 'urlapi': 'http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101', 'urlweb': 'https://app.swaggerhub.com/apis/dpolob/api_afc_enc_dss/2.0.0-oas3', 'config': {'status': 'START', 'frequency': 60, 'error': {}, 'flask_port': 5101, 'water': {'min': 12, 'max': 25}, 'soil': {'sand': 45, 'clay': 20, 'lime': 35, 'gross': 60}, 'last_check': 0, 'url_cesens': 'https://app.cesens.com', 'login': {'nombre': 'admin', 'clave': '98b4t875'}, 'station_id': '2703', 'metrics': {'Temp': 1, 'RH': 6, 'Solar': 21, 'Soil': 30}, 'afc_db_store': {'url': 'http://torcos.etsist.upm.es:9216/store/measures', 'resourceId': 'urn:afc:AS04:waterManagement:ENC:algorithm:afc_dss_enc_water', 'sequence_number': 1, 'location': {'latitude': 41.331535, 'longitude': -4.99383, 'altitude': 709}, 'observedProperty': 'irrigation', 'uom': 'http://qudt.org/vocab/unit/MiliM'}}, 'status': 2, 'id': 40492}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 17:52:47] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 17:54:52] "[33mPOST /update HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 17:55:44] "[31m[1mPOST /list HTTP/1.1[0m" 405 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {'param1': 10, 'param2': 20}, 'status': 2, 'id': 5}, {'name': 'encore_dss', 'description': 'water needs', 'urlapi': 'http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101', 'urlweb': 'https://app.swaggerhub.com/apis/dpolob/api_afc_enc_dss/2.0.0-oas3', 'config': {'status': 'START', 'frequency': 60, 'error': {}, 'flask_port': 5101, 'water': {'min': 12, 'max': 25}, 'soil': {'sand': 45, 'clay': 20, 'lime': 35, 'gross': 60}, 'last_check': 0, 'url_cesens': 'https://app.cesens.com', 'login': {'nombre': 'admin', 'clave': '98b4t875'}, 'station_id': '2703', 'metrics': {'Temp': 1, 'RH': 6, 'Solar': 21, 'Soil': 30}, 'afc_db_store': {'url': 'http://torcos.etsist.upm.es:9216/store/measures', 'resourceId': 'urn:afc:AS04:waterManagement:ENC:algorithm:afc_dss_enc_water', 'sequence_number': 1, 'location': {'latitude': 41.331535, 'longitude': -4.99383, 'altitude': 709}, 'observedProperty': 'irrigation', 'uom': 'http://qudt.org/vocab/unit/MiliM'}}, 'status': 2, 'id': 40492}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 17:55:51] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 17:56:20] "[31m[1mGET /update/40492 HTTP/1.1[0m" 405 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Update is user
+INFO:root:Permit granted
+INFO:root:[Update API] Algorithm config updated
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 17:56:26] "[37mPOST /update/40492 HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {}, 'status': 2, 'id': 0}, {'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {'param1': 10, 'param2': 20}, 'status': 2, 'id': 5}, {'name': 'encore_dss', 'description': 'water needs', 'urlapi': 'http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101', 'urlweb': 'https://app.swaggerhub.com/apis/dpolob/api_afc_enc_dss/2.0.0-oas3', 'config': {'status': 'START', 'frequency': 60, 'error': {}, 'flask_port': 5101, 'water': {'min': 12, 'max': 25}, 'soil': {'sand': 45, 'clay': 20, 'lime': 35, 'gross': 60}, 'last_check': 0}, 'status': 2, 'id': 40492}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 17:57:54] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Delete is admin
+INFO:root:Permit denied. Needed Delete but provided user
+INFO:root:Sent 401 error to host
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 17:58:25] "[31m[1mGET /delete/0 HTTP/1.1[0m" 401 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Delete is admin
+INFO:root:Permit granted
+INFO:root:[Delete API] Deletion sucessful. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 17:58:40] "[37mGET /delete/0 HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {'param1': 10, 'param2': 20}, 'status': 2, 'id': 5}, {'name': 'encore_dss', 'description': 'water needs', 'urlapi': 'http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101', 'urlweb': 'https://app.swaggerhub.com/apis/dpolob/api_afc_enc_dss/2.0.0-oas3', 'config': {'status': 'START', 'frequency': 60, 'error': {}, 'flask_port': 5101, 'water': {'min': 12, 'max': 25}, 'soil': {'sand': 45, 'clay': 20, 'lime': 35, 'gross': 60}, 'last_check': 0}, 'status': 2, 'id': 40492}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 17:58:55] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 500 None
+INFO:root:[Start API][requests.exceptions.HTTPError, requests.exceptions.ConnectionError]Algorithm not reachable in http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101. Code 501 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:01:15] "[35m[1mGET /start/40492 HTTP/1.1[0m" 501 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to List is user
+INFO:root:Permit granted
+INFO:root:[List API] Serving list [{'name': 'pepito', 'description': 'algoritmo de prueba', 'urlapi': 'http://fake_api', 'urlweb': 'custom web for algorithm', 'config': {'param1': 10, 'param2': 20}, 'status': 2, 'id': 5}, {'name': 'encore_dss', 'description': 'water needs', 'urlapi': 'http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101', 'urlweb': 'https://app.swaggerhub.com/apis/dpolob/api_afc_enc_dss/2.0.0-oas3', 'config': {'status': 'START', 'frequency': 60, 'error': {}, 'flask_port': 5101, 'water': {'min': 12, 'max': 25}, 'soil': {'sand': 45, 'clay': 20, 'lime': 35, 'gross': 60}, 'last_check': 0}, 'status': 2, 'id': 40492}]. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:01:27] "[37mGET /list HTTP/1.1[0m" 200 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 200 80
+INFO:root:[RUN_ALG]Algorithm status: STARTED. Info: {'OK': 'Algorithm started and ifo sent to MMT'}
+INFO:root:[Start API] Algorithm id 40492 started. Code 200 sent
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:05:46] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 200 80
+INFO:root:[RUN_ALG]Algorithm status: STARTED. Info: {'OK': 'Algorithm started and ifo sent to MMT'}
+INFO:root:[Start API] Algorithm id 40492 started. Code 200 sent
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:06:24] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 200 80
+INFO:root:[RUN_ALG]Algorithm status: STARTED. Info: {'OK': 'Algorithm started and ifo sent to MMT'}
+INFO:root:[Start API] Algorithm id 40492 started. Code 200 sent
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:09:37] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 200 80
+INFO:root:[RUN_ALG]Algorithm status: STARTED. Info: {'OK': 'Algorithm started and ifo sent to MMT'}
+INFO:root:[Start API] Algorithm id 40492 started. Code 200 sent
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:17:40] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 200 80
+INFO:root:[RUN_ALG]Algorithm status: STARTED. Info: {'OK': 'Algorithm started and ifo sent to MMT'}
+INFO:root:[Start API] Algorithm id 40492 started. Code 200 sent
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:20:49] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 200 80
+INFO:root:[RUN_ALG]Algorithm status: STARTED. Info: {'OK': 'Algorithm started and ifo sent to MMT'}
+INFO:root:[Start API] Algorithm id 40492 started. Code 200 sent
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:23:15] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:33:29] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:34:32] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:35:16] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:37:59] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 200 80
+INFO:root:[RUN_ALG]Algorithm status: STARTED. Info: {'OK': 'Algorithm started and ifo sent to MMT'}
+INFO:root:[Start API] Algorithm id 40492 started. Code 200 sent
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:38:45] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 200 80
+INFO:root:[RUN_ALG]Algorithm status: STARTED. Info: {'OK': 'Algorithm started and ifo sent to MMT'}
+INFO:root:[Start API] Algorithm id 40492 started. Code 200 sent
+INFO:root:[Start API][DBAlgorithmNotExistException, errors.DBAlgorithmUpdateException, Exception]Failure in DSS to start algorithm or algorithm do not exist. Code 500 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:41:24] "[35m[1mGET /start/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "POST /run_alg HTTP/1.1" 200 80
+INFO:root:[RUN_ALG]Algorithm status: STARTED. Info: {'OK': 'Algorithm started and ifo sent to MMT'}
+INFO:root:[Start API] Algorithm id 40492 started. Code 200 sent
+INFO:root:[Start API] Algorithm status updated
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 18:44:09] "[37mGET /start/40492 HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Sent 401 error to host
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 19:01:08] "[31m[1mGET /status/40492 HTTP/1.1[0m" 401 -
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Status is user
+INFO:root:Permit granted
+INFO:root:[Status API][UncaughtException] 'url'
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 19:01:35] "[35m[1mGET /status/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Status is user
+INFO:root:Permit granted
+INFO:root:[Status API][UncaughtException] 'url'
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 19:04:30] "[35m[1mGET /status/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Status is user
+INFO:root:Permit granted
+INFO:root:[Status API][UncaughtException] 'url'
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 19:07:19] "[35m[1mGET /status/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Status is user
+INFO:root:Permit granted
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading
+INFO:root:[Status API][UncaughtException] 'url'
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 19:10:26] "[35m[1mGET /status/40492 HTTP/1.1[0m" 500 -
+INFO:root:[DSS] Execution started
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:[DSS] Execution started
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Status is user
+INFO:root:Permit granted
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): ec2-35-181-5-77.eu-west-3.compute.amazonaws.com
+DEBUG:urllib3.connectionpool:http://ec2-35-181-5-77.eu-west-3.compute.amazonaws.com:5101 "GET /status_alg HTTP/1.1" 200 285
+INFO:root:[STATUS_ALG]Algorithm status: STARTED. Info: {'errors': {}, 'flask_port': 5101, 'frequency': 60, 'soil': {'clay': 20, 'gross': 60, 'lime': 35, 'sand': 45}, 'status': 'START', 'water': {'max': 25, 'min': 12}}
+INFO:root:[Status API] Algorithm sent status. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [24/Jun/2020 19:13:04] "[37mGET /status/40492 HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/afc_dss/api_classes.py', reloading

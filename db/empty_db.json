@@ -36,8 +36,8 @@
             "keys": [
                 "algorithm_name",
                 "description",
-                "url_api",
-                "url_web",
+                "urlapi",
+                "urlweb",
                 "config"
             ]
         },
