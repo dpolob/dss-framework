@@ -124,4 +124,6 @@ trans_fac = TTransport.TBufferedTransportFactory()
 proto_fac = TBinaryProtocol.TBinaryProtocolFactory()
 server = TServer.TSimpleServer(proc, trans_svr, trans_fac, proto_fac)
 logger.info("[THRIFT SERVER] Started")
+
+print ("Running thrift server")
 server.serve()
