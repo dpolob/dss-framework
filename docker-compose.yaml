@@ -6,4 +6,5 @@ services:
       dockerfile: dockerfile-dss
       context: .
     ports:
-      - '5000:5000'
+      - '5000:5000' # for api rest
+      - '5001:5001' # for thrift

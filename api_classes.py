@@ -178,7 +178,7 @@ class Start(Resource):
             logger.info("[Start API] Algorithm id {} started. Code 200 sent".format(self.algorithm_id))
 
             # change status in database
-            if not change_status(id=self.algorithm_id, new_status=StatusEnum.STARTED, table=table):
+            if not change_status(id=self.algorithm_id, new_status="STARTED", table=table):
                 raise errors.DBAlgorithmUpdateException()
 
             logger.info("[Start API] Algorithm status updated")
@@ -278,7 +278,7 @@ class Status(Resource):
             response = algorithm.status_alg()
             logger.info("[Status API] Algorithm sent status. Code 200 sent")
             # check if status is correct
-            if not response["status"] in ("STARTED", "STOPPED"):
+            if not response['status'] in ("STARTED", "STOPPED"):
                 raise errors.AlgorithmBadStatusException()
             # update status
             if not change_status(id=self.algorithm_id, new_status=response['status'], table=table):
