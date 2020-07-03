@@ -45,3 +45,9 @@ class DBAlgorithmUpdateException(Exception):
 ##  class DataTypeMissingException
 class DataTypeMissingException(Exception):
     logger.info("[DataTypeMissingException] : data type does not exist")
+
+class NoObservationTypeException(Exception):
+    logger.info("[NoObservationType] : observation type does not exist")  
+
+class DBRequestNotExistException(Exception):
+    logger.info("[DBRequestNotExistException] : request_id does not exist")   

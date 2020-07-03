@@ -16,6 +16,7 @@ from flask_httpauth import HTTPBasicAuth
 from tinydb import TinyDB, Query
 from flask import request, jsonify, make_response, Response
 from random import randint
+from mmt_thrift_client import MmtServiceSender
 
 import requests
 import json
@@ -106,7 +107,6 @@ class Delete(Resource):
             table= db.table('algorithm_list')  # switch to table
             query = Query()
             
-            print(table.all())
             if not table.remove(query.id == self.algorithm_id):
                 raise errors.DBDeletionWrongException()
             
@@ -365,6 +365,8 @@ class EntryPoint():
     #  Implement run_alg query to the algorithm 
     def run_alg(self, request_id):
 
+        # Update database of request_id
+
         response = requests.post(self.algorithm_url + "/run_alg",
                                 data=json.dumps(dict({
                                     "config" :self.algorithm_config,
@@ -444,18 +446,47 @@ class ConveyMMT(Resource):
             if data['data_type'] not in ("number", "boolean", "string", "position"):
                 raise errors.DataTypeMissingException()
             
-            # TODO
-            # convey to MMT format 
-            # convey_MMT(data['data'], data['data_type'], data['request_id'])
+            
+            # convey to MMT format
+            db = TinyDB(globals.DATABASE)
+            table= db.table('request_table')  # switch to table
+            query = Query()
+            result = table.search(query.request_id == int(data['request_id']))
+            if not result:
+                raise errors.DBRequestNotExistException()
+ 
+            sender = MmtServiceSender(data['data'], data['request_id'], result[0]['algorithm_id'])
+            if data['data_type'] == "number":
+                sender.convey_number()
+            elif data['data_type'] == "boolean":
+                sender.convey_boolean()
+            elif data['data_type'] == "string":
+                sender.convey_string()
+            elif data['data_type'] == "position":
+                sender.convey_position()
+
+            # remove request_id from database
+            table= db.table('request_table')  # switch to table
+            query = Query()
+
+            if not table.remove(query.request_id == int(data['request_id'])):
+                raise errors.DBDeletionWrongException()
             
             logger.info("[Response API] Data {} sent to MMT. Code 200 sent".format(data['data']))
             return Response("Data sent to MMT", status=200, mimetype='text/plain')
         
         except (errors.DataTypeMissingException):
             logger.info("[Response API][DataTypeMissingException] Data_type does not exist. Code 501 sent")
-            return Response("Failure in response of algorithm. Check datatypes.", status=501, mimetype='text/plain')           
+            return Response("Failure in response of algorithm. Check datatypes.", status=501, mimetype='text/plain')    
 
-        except (errors.JsonKeysWrongException, Exception):
+        except (errors.DBRequestNotExistException, errors.DBDeletionWrongException):
+            logger.info("[Response API][DBRequestNotExistException] Request_id does not exist. Code 501 sent")
+            return Response("Failure in response of algorithm. Request_id does not exist", status=501, mimetype='text/plain')        
+
+        except (errors.JsonKeysWrongException):
             logger.info("[Response API][JsonKeysWrongException] Failure in response of algorithm. Check json. Code 500 sent")
             return Response("Failure in response of algorithm. Check json.", status=500, mimetype='text/plain')
+        except Exception as e:
+            logger.info("[Response API][UncaughtException] {}".format(e))
+            return Response("Failure in response of algorithm. Check log.", status=500, mimetype='text/plain')
 

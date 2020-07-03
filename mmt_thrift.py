@@ -12,6 +12,10 @@ import sys
 sys.path.append('gen-py')
 from AFC_DSS import DssService
 from AFC_DSS_Types import ttypes as dss_types
+from AFC_Sensors import ttypes as sensor_types
+from AFC_Types import ttypes as afc_types
+from AFC_MMT import MmtService
+
 from thrift.transport import TSocket
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
@@ -23,6 +27,7 @@ logger =logging.getLogger()
 logger.setLevel(logging.DEBUG)
 logger = logging.getLogger()
 
+# class for serving
 class DssServiceHandler:
     def ping(self):
         logger.info("[THRIFT SERVER] Ping requested by MMT. Bad joke sent")
@@ -110,18 +115,34 @@ class DssServiceHandler:
 
             if not change_status(id=int(algorithmId), new_status="STARTED", table=table):
                 raise errors.DBAlgorithmUpdateException()
+            
+            # Save request_id asociated to algorithm
+            data={}
+            data['algorithm_id'] = int(algorithmId)
+            data['request_id'] = int(requestId)
+            table = db.table('request_table')
+            if table.insert(data) < 0:
+                raise errors.DBInsertionWrongException()
+            logger.info("[THIRFT SERVER] Insertion in data base correct of request_id")
 
-       
+        except (errors.DBInsertionWrongException):
+            logger.info("[THIRFT SERVER] Insertion in data base NOT correct of request_id")
+
         except Exception as e:
             logger.info("[THRIFT SERVER]{}".format(e))
 
-# run thrift server
-handler = DssServiceHandler()
-proc = DssService.Processor(handler)
+# class for sending info
 
-trans_svr = TSocket.TServerSocket(port=5001)
-trans_fac = TTransport.TBufferedTransportFactory()
-proto_fac = TBinaryProtocol.TBinaryProtocolFactory()
-server = TServer.TSimpleServer(proc, trans_svr, trans_fac, proto_fac)
-logger.info("[THRIFT SERVER] Started")
-server.serve()
+
+if __name__=="__main__":
+    # run thrift server
+    handler = DssServiceHandler()
+    proc = DssService.Processor(handler)
+
+    trans_svr = TSocket.TServerSocket(port=5001)
+    trans_fac = TTransport.TBufferedTransportFactory()
+    proto_fac = TBinaryProtocol.TBinaryProtocolFactory()
+    server = TServer.TSimpleServer(proc, trans_svr, trans_fac, proto_fac)
+    logger.info("[THRIFT SERVER] Started")
+    print("[THRIFT SERVER] Started")
+    server.serve()

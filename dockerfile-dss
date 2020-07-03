@@ -10,16 +10,19 @@ RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y vim
 RUN apt-get install -y libboost-dev libboost-test-dev libboost-program-options-dev libboost-filesystem-dev libboost-thread-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
+RUN apt-get install -y wget
+run apt-get install -y  build-essential
+
 WORKDIR /thrift
 RUN wget https://ftp.cixug.es/apache/thrift/0.13.0/thrift-0.13.0.tar.gz
 RUN tar -xvf thrift-0.13.0.tar.gz
 WORKDIR /thrift/thrift-0.13.0
 
 RUN ./bootstrap.sh
-RUN ./configure
+RUN ./configure --disable-dependency-tracking
 RUN make
 RUN make install
 
 WORKDIR /afc_dss
 RUN pip3 install -r requeriments.txt
-CMD python3 main.py
+CMD python3 main.py && python3 mmt_thrift.py
