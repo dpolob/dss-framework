@@ -20,7 +20,7 @@ WORKDIR /thrift/thrift-0.13.0
 
 RUN ./bootstrap.sh
 RUN ./configure --disable-dependency-tracking
-RUN make
+RUN make 
 RUN make install
 
 WORKDIR /afc_dss
