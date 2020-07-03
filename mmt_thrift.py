@@ -139,6 +139,7 @@ if __name__=="__main__":
     handler = DssServiceHandler()
     proc = DssService.Processor(handler)
 
+<<<<<<< HEAD
     trans_svr = TSocket.TServerSocket(port=5001)
     trans_fac = TTransport.TBufferedTransportFactory()
     proto_fac = TBinaryProtocol.TBinaryProtocolFactory()
@@ -146,3 +147,13 @@ if __name__=="__main__":
     logger.info("[THRIFT SERVER] Started")
     print("[THRIFT SERVER] Started")
     server.serve()
+=======
+trans_svr = TSocket.TServerSocket(port=5001)
+trans_fac = TTransport.TBufferedTransportFactory()
+proto_fac = TBinaryProtocol.TBinaryProtocolFactory()
+server = TServer.TSimpleServer(proc, trans_svr, trans_fac, proto_fac)
+logger.info("[THRIFT SERVER] Started")
+
+print ("Running thrift server")
+server.serve()
+>>>>>>> 04e44116beaf2e388d5a16cd99ed992bf7672550
