@@ -174,7 +174,7 @@ class Start(Resource):
             # convey data to algorithm through /run_alg
             # as user is using API requestId it is fake
             # MMT wil provide a correct one
-            algorithm.run_alg(26120)
+            algorithm.run_alg(randint(0,999999))
             logger.info("[Start API] Algorithm id {} started. Code 200 sent".format(self.algorithm_id))
 
             # change status in database
@@ -480,8 +480,8 @@ class ConveyMMT(Resource):
             return Response("Failure in response of algorithm. Check datatypes.", status=501, mimetype='text/plain')    
 
         except (errors.DBRequestNotExistException, errors.DBDeletionWrongException):
-            logger.info("[Response API][DBRequestNotExistException] Request_id does not exist. Code 501 sent")
-            return Response("Failure in response of algorithm. Request_id does not exist", status=501, mimetype='text/plain')        
+            logger.info("[Response API][DBRequestNotExistException] Request_id does not exist. Code 502 sent")
+            return Response("Request_id does not exist", status=502, mimetype='text/plain')        
 
         except (errors.JsonKeysWrongException):
             logger.info("[Response API][JsonKeysWrongException] Failure in response of algorithm. Check json. Code 500 sent")
