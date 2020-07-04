@@ -1,10 +1,16 @@
 version: '3'
 services:
-  dss:
-    container_name: dss
+  dss-rest:
+    container_name: dss-rest
     build:
-      dockerfile: dockerfile-dss
+      dockerfile: dockerfile-dss-rest-repo
       context: .
     ports:
       - '5000:5000' # for api rest
+  dss-thrift:
+    container_name: dss-thrift
+    build:
+      dockerfile: dockerfile-dss-thrift-repo
+      context: .
+    ports:
       - '5001:5001' # for thrift
