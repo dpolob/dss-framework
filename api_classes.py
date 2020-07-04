@@ -387,7 +387,7 @@ class EntryPoint():
                                                         "dss_api_endpoint": globals.DSSURL })),
                                 headers={"Content-Type": "application/json"},
                                 auth= ('entrypoint','fakepass'),
-                                timeout = 3000.0
+                                timeout = 10.0
                                 )
         response.raise_for_status()  # if not 200 raise an exception requests.exceptions.HTTPError
         data_from_alg = json.loads(response.text)
