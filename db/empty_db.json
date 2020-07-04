@@ -49,7 +49,7 @@
         },
         "3": {
             "route": "response",
-            "key": [
+            "keys": [
                 "request_id",
                 "data",
                 "data_type"

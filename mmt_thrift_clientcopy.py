@@ -15,13 +15,8 @@ proto = TBinaryProtocol.TBinaryProtocol(trans)
 client = DssService.Client(proto)
 
 trans.open()
-msg = client.getAlgorithmList()
-print("[CLIENT] recieved %s" % msg)
 
-msg = client.ping()
-print("[CLIENT] recieved %s" % msg)
-
-msg = client.getAlgorithmStatus(int(1111), int(140492))
+msg = client.startAlgorithm(int(1111), int(40492))
 print("[CLIENT] recieved %s" % msg)
 
 client.startAlgorithm(int(1111), int(40492))

@@ -167,7 +167,8 @@ class Start(Resource):
                 raise errors.DBAlgorithmNotExistException()
  
             algorithm = EntryPoint(algorithm_url = result[0]['urlapi'],
-                                   algorithm_config = result[0]['config']
+                                   algorithm_config = result[0]['config'],
+                                   algorithm_id=self.algorithm_id
                         )
            
 
@@ -272,7 +273,8 @@ class Status(Resource):
                 raise errors.DBAlgorithmNotExistException()
  
             algorithm = EntryPoint(algorithm_url = result[0]['urlapi'],
-                                   algorithm_config = {}
+                                   algorithm_config = {},
+                                   algorithm_id=self.algorithm_id
                         )
             # convey data to algorithm through /status_alg
             response = algorithm.status_alg()
@@ -323,7 +325,8 @@ class Stop(Resource):
                 raise errors.DBAlgorithmNotExistException()
  
             algorithm = EntryPoint(algorithm_url = result[0]['urlapi'],
-                                   algorithm_config = {}
+                                   algorithm_config = {},
+                                   algorithm_id=self.algorithm_id
                         )
 
             # convey data to algorithm through /stop_alg
@@ -357,27 +360,36 @@ class EntryPoint():
     ## Constructor
     #  @param algorithm_url: string Url of the base api of the algorithm
     #  @param algorithm_config: dict Content of 'config' key send by the user
-    def __init__(self, algorithm_url, algorithm_config):
+    def __init__(self, algorithm_url, algorithm_config, algorithm_id):
         self.algorithm_url = algorithm_url
         self.algorithm_config = algorithm_config
+        self.algorithm_id = int(algorithm_id)
     
     ## run_alg function
     #  Implement run_alg query to the algorithm 
     def run_alg(self, request_id):
 
         # Update database of request_id
+        # Save request_id asociated to algorithm
+        data={}
+        data['algorithm_id'] = self.algorithm_id
+        data['request_id'] = int(request_id)
+        db = TinyDB(globals.DATABASE)
+        table = db.table('request_table')
+        if table.insert(data) < 0:
+            raise errors.DBInsertionWrongException()
+        logger.info("[THIRFT SERVER] Insertion in data base correct of request_id")
 
-        response = requests.post(self.algorithm_url + "/run_alg",
+        response = requests.post(self.algorithm_url + "/run_alg", 
                                 data=json.dumps(dict({
-                                    "config" :self.algorithm_config,
-                                    "request_id" :request_id,
-                                    "dss_api_endpoint": globals.DSSURL })),
+                                                        "config" :self.algorithm_config,
+                                                        "request_id" :request_id,
+                                                        "dss_api_endpoint": globals.DSSURL })),
                                 headers={"Content-Type": "application/json"},
                                 auth= ('entrypoint','fakepass'),
-                                timeout = 3.0
+                                timeout = 3000.0
                                 )
         response.raise_for_status()  # if not 200 raise an exception requests.exceptions.HTTPError
-        
         data_from_alg = json.loads(response.text)
  
         if data_from_alg['status'] != 'STARTED':

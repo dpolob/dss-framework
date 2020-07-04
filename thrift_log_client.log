@@ -1,3 +1,25 @@
 INFO:root:[DSS] Execution started
 WARNING:werkzeug: * Debugger is active!
-INFO:werkzeug: * Debugger PIN: 134-946-610
+INFO:werkzeug: * Debugger PIN: 124-418-019
+INFO:root:User password is correct
+INFO:root:Permit needed to access to Start is user
+INFO:root:Permit granted
+INFO:root:[THIRFT SERVER] Insertion in data base correct of request_id
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 0.0.0.0
+ERROR:thrift.transport.TSocket:failed to resolve sockaddr for localhost:6000:9090
+Traceback (most recent call last):
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/thrift/transport/TSocket.py", line 99, in open
+    addrs = self._resolveAddr()
+  File "/home/diegopolo/.local/lib/python3.6/site-packages/thrift/transport/TSocket.py", line 42, in _resolveAddr
+    socket.AI_PASSIVE | socket.AI_ADDRCONFIG)
+  File "/usr/lib/python3.6/socket.py", line 745, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -2] Name or service not known
+INFO:root:[THRIFT CLIENT] failed to resolve sockaddr for localhost:6000:9090
+INFO:root:[Response API] Data [{'timestamp': 1593845965, 'observation': 'water_consumption', 'units': 'mm', 'result': 119.49583771309315}] sent to MMT. Code 200 sent
+INFO:werkzeug:127.0.0.1 - - [04/Jul/2020 09:00:22] "[37mPOST /conveymmt HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:http://0.0.0.0:5101 "POST /run_alg HTTP/1.1" 200 80
+INFO:root:[RUN_ALG]Algorithm status: STARTED. Info: {'OK': 'Algorithm started and ifo sent to MMT'}
+INFO:root:[Start API] Algorithm id 34300 started. Code 200 sent
+INFO:root:[Start API] Algorithm status updated
+INFO:werkzeug:127.0.0.1 - - [04/Jul/2020 09:00:22] "[37mGET /start/34300 HTTP/1.1[0m" 200 -

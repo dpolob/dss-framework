@@ -82,11 +82,12 @@ class DssServiceHandler:
             logger.info("[THRIFT SERVER] Sending /status_alg command to algorithm {} in {}".format(algorithmId, result[0]['urlapi']))
             
             algorithm = EntryPoint(algorithm_url=result[0]['urlapi'],
-                                   algorithm_config={})
+                                   algorithm_config={},
+                                   algorithm_id=algorithmId)
             data_from_alg = algorithm.status_alg()
             
             # update status
-            if not change_status(id=int(algorithm_id), new_status=response['status'], table=table):
+            if not change_status(id=int(algorithmId), new_status=data_from_alg['status'], table=table):
                 raise errors.DBAlgorithmUpdateException()
             
             return dss_types.AlgorithmStatus.Available if data_from_alg['status']=="STARTED" else dss_types.AlgorithmStatus.NotAvailable
@@ -107,7 +108,8 @@ class DssServiceHandler:
             logger.info("[THRIFT SERVER] Sending/run_alg  command to algorithm in {} with requestId {} with config {}".format(result[0]['urlapi'], requestId, result[0]['config']))
             
             algorithm = EntryPoint(algorithm_url=result[0]['urlapi'],
-                                   algorithm_config=result[0]['config']
+                                   algorithm_config=result[0]['config'],
+                                   algorithm_id=algorithmId
                                   )
             algorithm.run_alg(int(requestId))
             logger.info("[THRIFT SERVER] Algorithm replied STARTED")
@@ -116,17 +118,14 @@ class DssServiceHandler:
             if not change_status(id=int(algorithmId), new_status="STARTED", table=table):
                 raise errors.DBAlgorithmUpdateException()
             
-            # Save request_id asociated to algorithm
-            data={}
-            data['algorithm_id'] = int(algorithmId)
-            data['request_id'] = int(requestId)
-            table = db.table('request_table')
-            if table.insert(data) < 0:
-                raise errors.DBInsertionWrongException()
-            logger.info("[THIRFT SERVER] Insertion in data base correct of request_id")
-
         except (errors.DBInsertionWrongException):
             logger.info("[THIRFT SERVER] Insertion in data base NOT correct of request_id")
+        
+        except (errors.DBAlgorithmUpdateException):
+            logger.info("[THIRFT SERVER] Cannot update algorithm status")
+        
+        except (errors.DDBAlgorithmNotExistException):
+            logger.info("[THIRFT SERVER] Algorithm do not exist")
 
         except Exception as e:
             logger.info("[THRIFT SERVER]{}".format(e))
