@@ -290,7 +290,7 @@ class Status(Resource):
 
         except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError): 
             logger.info("[Status API][requests.exceptions.HTTPError, requests.exceptions.ConnectionError]" \
-                        "Algorithm not reachable in {}. Code 501 sent".format(result[0]['url'])) 
+                        "Algorithm not reachable in {}. Code 501 sent".format(result[0]['urlapi'])) 
             return Response("Algorithm api not reachable", status=501, mimetype='text/plain')
 
         except (errors.AlgorithmBadStatusException, json.decoder.JSONDecodeError):
