@@ -351,7 +351,7 @@ class Stop(Resource):
         
         except Exception as e:
             logger.info("[Stop API][UncaughtException] \
-                        Failure in DSS to stop algorithm or algorithm do not exist. Code 500 sent")
+                        {}".format(e))
             return Response("Failure in DSS to start algorithm or algorithm do not exist. Check log", status=500, mimetype='text/plain')
 ## EntryPoint class
 #
