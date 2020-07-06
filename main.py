@@ -8,7 +8,9 @@
 
 import os
 import sys
-import logging  # logger
+import logging
+import logging.config
+import loggly.handlers
 import globals
 
 
@@ -35,9 +37,8 @@ api.add_resource(Update, '/update/<string:algorithm_id>')
 api.add_resource(ConveyMMT, '/conveymmt')
 
 # setting up logger
-logging.basicConfig(filename="dss_log.log", filemode='w')
-logger =logging.getLogger()
-logger.setLevel(logging.DEBUG)
+logging.config.fileConfig('loggly.conf')
+logger = logging.getLogger('DSS')
 
 logger.info("[DSS] Execution started")
 

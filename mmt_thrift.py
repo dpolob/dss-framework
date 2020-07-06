@@ -7,6 +7,10 @@ import json
 import globals
 from api_classes import EntryPoint
 
+import logging
+import logging.config
+import loggly.handlers
+
 ## @imports for Thrift
 import sys
 sys.path.append('gen-py')
@@ -22,10 +26,8 @@ from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
 # Activate logging
-logging.basicConfig(filename='thrift_log.log', filemode='w')
-logger =logging.getLogger()
-logger.setLevel(logging.DEBUG)
-logger = logging.getLogger()
+logging.config.fileConfig('loggly.conf')
+logger = logging.getLogger('THRIFT SERVER')
 
 # class for serving
 class DssServiceHandler:
