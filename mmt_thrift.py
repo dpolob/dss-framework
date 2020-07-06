@@ -26,7 +26,7 @@ from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
 # Activate logging
-logging.config.fileConfig('loggly.conf')
+logging.config.fileConfig('loggly-thrift.conf')
 logger = logging.getLogger('THRIFT SERVER')
 
 # class for serving

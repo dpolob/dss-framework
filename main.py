@@ -37,7 +37,7 @@ api.add_resource(Update, '/update/<string:algorithm_id>')
 api.add_resource(ConveyMMT, '/conveymmt')
 
 # setting up logger
-logging.config.fileConfig('loggly.conf')
+logging.config.fileConfig('loggly-dss.conf')
 logger = logging.getLogger('DSS')
 
 logger.info("[DSS] Execution started")
