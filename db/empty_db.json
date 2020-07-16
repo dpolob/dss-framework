@@ -32,9 +32,9 @@
     },
     "json_keys": {
         "1": {
-            "route": "register",
+            "route": "Register",
             "keys": [
-                "algorithm_name",
+                "name",
                 "description",
                 "urlapi",
                 "urlweb",
@@ -42,7 +42,7 @@
             ]
         },
         "2": {
-            "route": "update",
+            "route": "Update",
             "keys": [
                 "config"
             ]
@@ -57,6 +57,7 @@
         }
     },
     "algorithm_list": {
-
+    },
+    "request_table": {
     }
 }
