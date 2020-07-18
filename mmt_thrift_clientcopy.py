@@ -17,7 +17,8 @@ client = DssService.Client(proto)
 trans.open()
 
 #msg = client.startAlgorithm(int(1111), int(83020))
-msg = client.getAlgorithmStatus(int(1111), int(83020))
+#msg = client.getAlgorithmStatus(int(1111), int(83020))
+msg = client.getAlgorithmList()
 print("[CLIENT] recieved %s" % msg)
 
 #client.startAlgorithm(int(1111), int(40492))

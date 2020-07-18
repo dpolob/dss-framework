@@ -1,4 +1,6 @@
 ## @imports
+from flask.globals import request
+from flask.json import jsonify
 import errors
 import logging 
 from json_manipulation import check_jsonkeys, change_status
@@ -39,19 +41,17 @@ class DssServiceHandler:
     def getAlgorithmList(self):
         logger.info("[THRIFT SERVER] List requested by MMT")
         try:
+            dss_response = requests.get(globals.DSS_LIST_URL, auth= ('user', 'fakepass'))
+            """
             db = TinyDB(globals.DATABASE)
             table= db.table('algorithm_list')  # switch to table
             algorithms = table.all()
             if not algorithms:
                 raise errors.DBListWrongException()
-            
+            """
+            algorithms = json.loads(dss_response.text)
             list = []
             for algorithm in algorithms:
-                if algorithm['status'] == 'STARTED':
-                    status = dss_types.AlgorithmStatus.Available
-                else:
-                    status = dss_types.AlgorithmStatus.NotAvailable
-
                 list.append(dss_types.DssAlgorithm(Id=algorithm['id'],
                                                    Name=algorithm['name'],
                                                    Description=algorithm['description'],
