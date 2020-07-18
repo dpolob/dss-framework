@@ -64,11 +64,17 @@ class Register(Resource):
             table= db.table('algorithm_list')  # switch to table
             list = table.all()
 
+            #store basicAuth if exist
+            user = request.args.get('user', default='entrypoint', type=str)
+            password = request.args.get('pass', default='fakepass', type=str)
+            data['auth'] = {"user": user,
+                            "password": password}
+
             data['id'] = randint(0,99999)
 
             # check if url_web is provided if not provide default url_web
             if 'urlweb' not in data.keys():
-                logger.info("[Register API] Url web not provided. Used: {}}".format(globals.DEFAULT_URL_WEB))
+                logger.info("[Register API] Url web not provided. Used: {}".format(globals.DEFAULT_URL_WEB))
                 data['urlweb'] = globals.DEFAULT_URL_WEB
             
             table= db.table('algorithm_list')  # switch to table
@@ -170,7 +176,9 @@ class Start(Resource):
  
             algorithm = EntryPoint(algorithm_url = result[0]['urlapi'],
                                    algorithm_config = result[0]['config'],
-                                   algorithm_id=self.algorithm_id
+                                   algorithm_id=self.algorithm_id,
+                                   user=result[0]['auth']['user'],
+                                   password=result[0]['auth']['password']
                         )
            
 
@@ -276,7 +284,9 @@ class Status(Resource):
  
             algorithm = EntryPoint(algorithm_url = result[0]['urlapi'],
                                    algorithm_config = {},
-                                   algorithm_id=self.algorithm_id
+                                   algorithm_id=self.algorithm_id,
+                                   user=result[0]['auth']['user'],
+                                   password=result[0]['auth']['password']
                         )
             # convey data to algorithm through /status_alg
             response = algorithm.status_alg()
@@ -328,7 +338,9 @@ class Stop(Resource):
  
             algorithm = EntryPoint(algorithm_url = result[0]['urlapi'],
                                    algorithm_config = {},
-                                   algorithm_id=self.algorithm_id
+                                   algorithm_id=self.algorithm_id,
+                                   user=result[0]['auth']['user'],
+                                   password=result[0]['auth']['password']
                         )
 
             # convey data to algorithm through /stop_alg
@@ -362,10 +374,12 @@ class EntryPoint():
     ## Constructor
     #  @param algorithm_url: string Url of the base api of the algorithm
     #  @param algorithm_config: dict Content of 'config' key send by the user
-    def __init__(self, algorithm_url, algorithm_config, algorithm_id):
+    def __init__(self, algorithm_url, algorithm_config, algorithm_id, user, password):
         self.algorithm_url = algorithm_url
         self.algorithm_config = algorithm_config
         self.algorithm_id = int(algorithm_id)
+        self.algorithm_user = str(user)
+        self.algorithm_password = str(password)
     
     ## run_alg function
     #  Implement run_alg query to the algorithm 
@@ -388,7 +402,7 @@ class EntryPoint():
                                                         "request_id" :request_id,
                                                         "dss_api_endpoint": globals.DSSURL })),
                                 headers={"Content-Type": "application/json"},
-                                auth= ('entrypoint','fakepass'),
+                                auth= (self.algorithm_user, self.algorithm_password),
                                 timeout = 10.0
                                 )
         response.raise_for_status()  # if not 200 raise an exception requests.exceptions.HTTPError
@@ -409,7 +423,7 @@ class EntryPoint():
     def stop_alg(self):
         response = requests.get(self.algorithm_url + "/stop_alg",
                                 headers={"Content-Type": "text/plain"},
-                                auth= ('entrypoint','fakepass'),
+                                auth= (self.algorithm_user, self.algorithm_password),
                                 timeout= 5.0
                                 )
         response.raise_for_status()  # if not 200 raise an exception requests.exceptions.HTTPError
@@ -430,7 +444,7 @@ class EntryPoint():
     def status_alg(self):
         response = requests.get(self.algorithm_url + "/status_alg",
                                 headers={"Content-Type": "text/plain"},
-                                auth= ('entrypoint','fakepass'),
+                                auth= (self.algorithm_user, self.algorithm_password),
                                 timeout= 3.0
                                 )
         response.raise_for_status()  # if not 200 raise an exception requests.exceptions.HTTPError
