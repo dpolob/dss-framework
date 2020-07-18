@@ -6,6 +6,7 @@ from tinydb import TinyDB, Query
 import json
 import globals
 from api_classes import EntryPoint
+import requests
 
 import logging
 import logging.config
@@ -82,17 +83,27 @@ class DssServiceHandler:
 
             # send command to algorithm 
             logger.info("[THRIFT SERVER] Sending /status_alg command to algorithm {} in {}".format(algorithmId, result[0]['urlapi']))
-            
+            u = globals.DSS_STATUS_URL + "/" + str(algorithmId)
+            dss_response = requests.get(url=u, auth= ('user','fakepass'))
+            dss_response.raise_for_status()
+            """
             algorithm = EntryPoint(algorithm_url=result[0]['urlapi'],
                                    algorithm_config={},
                                    algorithm_id=algorithmId)
             data_from_alg = algorithm.status_alg()
+            """
+            data_from_alg = json.loads(dss_response.text)
             
             # update status
             if not change_status(id=int(algorithmId), new_status=data_from_alg['status'], table=table):
                 raise errors.DBAlgorithmUpdateException()
             
             return dss_types.AlgorithmStatus.Available if data_from_alg['status']=="STARTED" else dss_types.AlgorithmStatus.NotAvailable
+
+        except requests.exceptions.HTTPError as e:
+            logger.info("[THRIFT SERVER] /status not reached at DSS {}, {}".format(a, e))
+            return dss_types.AlgorithmStatus.NotAvailable
+
         except Exception as e:
             logger.info("[THRIFT SERVER][getAlgorithmStatus] Problems. Exception {}".format(e))
             return dss_types.AlgorithmStatus.NotAvailable            
@@ -108,18 +119,22 @@ class DssServiceHandler:
             
             # send command to algorithm 
             logger.info("[THRIFT SERVER] Sending/run_alg  command to algorithm in {} with requestId {} with config {}".format(result[0]['urlapi'], requestId, result[0]['config']))
-            
+            u = globals.DSS_START_URL + "/" + str(algorithmId)
+            dss_response = requests.get(url=u, params={"request_id": requestId}, auth= ('user','fakepass'))
+            dss_response.raise_for_status()
+            """
             algorithm = EntryPoint(algorithm_url=result[0]['urlapi'],
                                    algorithm_config=result[0]['config'],
                                    algorithm_id=algorithmId
                                   )
             algorithm.run_alg(int(requestId))
             logger.info("[THRIFT SERVER] Algorithm replied STARTED")
+            """
             # update status
 
             if not change_status(id=int(algorithmId), new_status="STARTED", table=table):
                 raise errors.DBAlgorithmUpdateException()
-            
+
         except (errors.DBInsertionWrongException):
             logger.info("[THIRFT SERVER] Insertion in data base NOT correct of request_id")
         
@@ -128,6 +143,9 @@ class DssServiceHandler:
         
         except (errors.DDBAlgorithmNotExistException):
             logger.info("[THIRFT SERVER] Algorithm do not exist")
+
+        except requests.exceptions.HTTPError as e:
+            logger.info("[THRIFT SERVER] /start not reached DSS {}, {}".format(a, e))
 
         except Exception as e:
             logger.info("[THRIFT SERVER]{}".format(e))

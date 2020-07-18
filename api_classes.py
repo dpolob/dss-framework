@@ -158,6 +158,8 @@ class Start(Resource):
     #  Start an algorithm sendind /run_alg command
     def get(self, algorithm_id):
         self.algorithm_id = int(algorithm_id)
+        request_id = request.args.get('request_id', default = randint(0,999999), type = int)
+  
         try:
             db = TinyDB(globals.DATABASE)
             table= db.table('algorithm_list')  # switch to table
@@ -175,7 +177,7 @@ class Start(Resource):
             # convey data to algorithm through /run_alg
             # as user is using API requestId it is fake
             # MMT wil provide a correct one
-            algorithm.run_alg(randint(0,999999))
+            algorithm.run_alg(request_id)
             logger.info("[Start API] Algorithm id {} started. Code 200 sent".format(self.algorithm_id))
 
             # change status in database
