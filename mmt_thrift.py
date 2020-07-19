@@ -145,7 +145,7 @@ class DssServiceHandler:
             logger.info("[THIRFT SERVER] Algorithm do not exist")
 
         except requests.exceptions.HTTPError as e:
-            logger.info("[THRIFT SERVER] /start not reached DSS {}, {}".format(a, e))
+            logger.info("[THRIFT SERVER] /start not reached DSS {}".format(e))
 
         except Exception as e:
             logger.info("[THRIFT SERVER]{}".format(e))
