@@ -9,14 +9,16 @@ from thrift.transport import TSocket
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
 
-trans = TSocket.TSocket("0.0.0.0", 5001)
+#remove https from url to work
+trans = TSocket.TSocket("ec2-35-181-5-77.eu-west-3.compute.amazonaws.com", 5001)
 trans = TTransport.TBufferedTransport(trans)
 proto = TBinaryProtocol.TBinaryProtocol(trans)
 client = DssService.Client(proto)
 
 trans.open()
 
-msg = client.startAlgorithm(int(1111), int(83020))
+#msg = client.ping()
+#msg = client.startAlgorithm(int(1111), int(83020))
 #msg = client.getAlgorithmStatus(int(1111), int(83020))
 msg = client.getAlgorithmList()
 print("[CLIENT] recieved %s" % msg)
