@@ -66,7 +66,7 @@ class Register(Resource):
 
             #store basicAuth if exist
             user = request.args.get('user', default='entrypoint', type=str)
-            password = request.args.get('pass', default='fakepass', type=str)
+            password = request.args.get('password', default='fakepass', type=str)
             data['auth'] = {"user": user,
                             "password": password}
 
