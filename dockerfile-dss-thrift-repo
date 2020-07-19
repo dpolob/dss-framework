@@ -24,4 +24,4 @@ COPY . /afc_dss
 
 WORKDIR /afc_dss
 RUN pip3 install -r requeriments.txt
-#CMD python3 mmt_thrift.py
+CMD python3 mmt_thrift.py

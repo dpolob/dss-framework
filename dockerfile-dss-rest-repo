@@ -1,6 +1,7 @@
 # dockerfile for dss-framework
 
-FROM python:3.6.10-slim-buster
+#FROM python:3.6.10-slim-buster
+FROM 16591354/dss-framework:latest 
 
 COPY . /afc_dss
 # empty database
@@ -10,7 +11,7 @@ RUN apt-get update
 RUN apt-get install -y git
 #RUN apt-get install -y vim
 #RUN apt-get install -y libboost-dev libboost-test-dev libboost-program-options-dev libboost-filesystem-dev libboost-thread-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
-RUN apt-get install -y wget
+#RUN apt-get install -y wget
 #run apt-get install -y  build-essential
 
 #WORKDIR /thrift
