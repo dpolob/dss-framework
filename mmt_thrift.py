@@ -159,7 +159,8 @@ if __name__=="__main__":
     proc = DssService.Processor(handler)
 
     trans_svr = TSocket.TServerSocket(port=5001)
-    trans_fac = TTransport.TBufferedTransportFactory()
+    #trans_fac = TTransport.TBufferedTransportFactory()
+    trans_fac = TTransport.TFramedTransportFactory()
     proto_fac = TBinaryProtocol.TBinaryProtocolFactory()
     server = TServer.TSimpleServer(proc, trans_svr, trans_fac, proto_fac)
     logger.info("[THRIFT SERVER] Started")
