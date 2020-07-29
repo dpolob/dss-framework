@@ -33,7 +33,8 @@ class MmtServiceSender:
         self.algorithm_id = int(algorithm_id)
         self.request_id = int(request_id)
         self.trans_sender = TSocket.TSocket(globals.MMTURL, globals.MMTPORT)
-        self.trans_sender = TTransport.TBufferedTransport(self.trans_sender)
+        #self.trans_sender = TTransport.TBufferedTransport(self.trans_sender)
+        self.trans_sender = TTransport.TFramedTransport(self.trans_sender)
         self.proto_sender = TBinaryProtocol.TBinaryProtocol(self.trans_sender)
         self.client_sender = MmtService.Client(self.proto_sender)
 

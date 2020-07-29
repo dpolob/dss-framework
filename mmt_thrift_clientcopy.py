@@ -11,7 +11,7 @@ from thrift.protocol import TBinaryProtocol
 
 #remove https from url to work
 #trans = TSocket.TSocket("ec2-35-181-5-77.eu-west-3.compute.amazonaws.com", 5001)
-trans=TSocket.TSocket("0.0.0.0", 5001)
+trans=TSocket.TSocket("ec2-35-181-5-77.eu-west-3.compute.amazonaws.com", 5001)
 #trans = TTransport.TBufferedTransport(trans)
 trans = TTransport.TFramedTransport(trans)
 proto = TBinaryProtocol.TBinaryProtocol(trans)
