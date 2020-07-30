@@ -78,7 +78,7 @@
                 "user": "entrypoint",
                 "password": "fakepass"
             },
-            "status": 1,
+            "status": 0,
             "id": 83020
         },
         "2": {
@@ -102,7 +102,7 @@
                 "user": "entrypoint",
                 "password": "fakepass"
             },
-            "status": 1,
+            "status": 0,
             "id": 44268
         },
         "3": {
@@ -126,7 +126,7 @@
                 "user": "entrypoint",
                 "password": "fakepass"
             },
-            "status": 2,
+            "status": 0,
             "id": 59725
         },
         "4": {
@@ -142,7 +142,7 @@
                 "user": "entrypoint",
                 "password": "fakepass"
             },
-            "status": 2,
+            "status": 0,
             "id": 29886
         },
         "6": {
@@ -151,7 +151,7 @@
             "urlapi": "http://150.241.41.130:5000",
             "urlweb": "https://app.swaggerhub.com/apis/dpolob/api_afc_enc_dss/1.0.0-oas3",
             "config": {},
-            "status": 2,
+            "status": 0,
             "auth": {
                 "user": "entrypoint",
                 "password": "fakepass"
