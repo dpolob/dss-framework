@@ -36,6 +36,10 @@ logger = logging.getLogger('THRIFT SERVER')
 class DssServiceHandler:
     def ping(self):
         logger.info("[THRIFT SERVER] Ping requested by MMT. Bad joke sent")
+        print (TSocket.socket.SOL_IP)
+        print (TSocket.socket.getservbyport(5001))
+        
+        
         return "Generating bad joke..."
     
     def getAlgorithmList(self):

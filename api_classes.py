@@ -58,7 +58,8 @@ class Register(Resource):
                  raise errors.JsonKeysWrongException()
             
             # add status as stopped
-            data['status'] = StatusEnum.STOPPED
+            # Changed to STARTED requested for MMT
+            data['status'] = StatusEnum.STARTED
 
             # add id a sequential number
             table= db.table('algorithm_list')  # switch to table
