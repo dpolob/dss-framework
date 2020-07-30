@@ -10,9 +10,13 @@ V E R S I O N       2.0
 ------------------------------------------------
 THIS IS A PRELIMINARY VERSION. SOME ISSUES ARE STILL UNRESOLVED. FIND AND RESOLVE ALL COMMENTS IN THE CODE MARKED WITH "//NOTE"
 ------------------------------------------------
+Date: 2020 July 28
+
+- A query function is now added that can be used to get the reuslts of the IPP which send their result directly to the SQ 
+
 Date: 2020 June 23
 
-- Query functions now use either a circle or a farm's partfield ID instead of a region
+- Query functions now use either a circle or a farm's partfield ID instead of a region. The Circle versions have a "C" suffix, the Partfield versions have a "PF" suffix.
 - All timestamps are i64 now
 
 Date: 2020 June 3
@@ -65,13 +69,16 @@ service SemanticQueryService
     //----------------------------------------------------------------------------------------
 	list<AFC_Sensors.CollarData> queryCollarLastDataPF                    (1: i32 requestId, 2: i32 partfieldId),			                                    //All last value data from collars in a region
     list<AFC_Sensors.CollarData> queryCollarLastDataC                     (1: i32 requestId, 2: AFC_Types.Position regionCentre, 3: i32 radius),	            //All last value data from collars in a region
-	list<AFC_Sensors.CollarData> queryCollarLastDataByCollarUid         (1: i32 requestId, 2: string collarUid),		                                    //Last value data from a given collar
+	list<AFC_Sensors.CollarData> queryCollarLastDataByCollarUid           (1: i32 requestId, 2: string collarUid),		                                    //Last value data from a given collar
 
     //Query Functions for vehiclues for last values available in database
     //----------------------------------------------------------------------------------------
     list<AFC_Types.StateVector> queryVehicleLastStateVectorPF             (1: i32 requestId, 2: i32 partfieldId),                                             //All last value data of vehicles' state vectors in a region
     list<AFC_Types.StateVector> queryVehicleLastStateVectorC              (1: i32 requestId, 2: AFC_Types.Position regionCentre, 3: i32 radius),              //All last value data of vehicles' state vectors in a region
 	list<AFC_Types.StateVector> queryVehicleLastStateVectorByVehicleId    (1: i32 requestId, 2: i32 vehicleId ),                                              //All last value data of a vehicle's state vectors specified by a vehicleId
+
+    //Query function for receiving the Image Processing results
+    list<AFC_Types.DetectionRegion> queryDetectedStuffOnTheFarm           (1: i32 requestId, 2: i64 startTime, 3: i64 endTime),                               //Sends the results from IPP back to MMT
 
 
     //Historical Queries

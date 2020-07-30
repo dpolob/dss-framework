@@ -5,6 +5,21 @@ namespace cpp afarcloud
 /*
 V E R S I O N       2.0
 ------------------------------------------------
+Date: 2020 July 29
+
+- The list<Positions> type in Partfield is now changed to a Region object.
+- Task now includes a list of partfields and treatmentzones related to the task.
+
+Date: 2020 July 28
+
+- The VehicleType enumeration now includes UAV, UGV and Tractor types. They are the same as AUAV, AGV and RGV types. If your code relies on VehicleType enumeration make sure that it supports both represetations.
+- SPRAYER is added the EquipmentType enumeration to support for spraying in UGVs. More Tractor related equipment will be added after Y2 demos.
+- DetectionRegion is a new struct which is used for representing the IPP detection results.
+- Equipment struct now has a two new fields "isoId" and "Id". "isoId" is the string ID that ISOBUS system uses. ID is something we might use later. Both are optional.  Just pass them around.
+- PartField also has a new "isoId" field. Read the above sentence to know what it is.
+- CropType is removed from PartField
+- ThreatmentGrid now includes a taskId, so the MissionManager knows which task a treatment is related to.
+
 Date: 2020 June 25
 
 - Partfield definitions are added.
@@ -28,12 +43,14 @@ T O D O
 */
 
 
-
 enum VehicleType{   	// to be updated when HIB finishes the ontology
 	AUAV,           	//autonomous drone (Autonomous Unmmaned Aerial Vehicle)
 	RUAV,           	//remotely piloted drone 
 	AGV,            	//autonomous ground vehicle
 	RGV,            	//piloted ground vehicle
+	UAV,				//Same as AUAV, dont ask why we did this. Just deal with it!			
+	UGV,				//Same as AGV
+	Tractor,			//Same as RGV
 }
 
 enum TaskType{
@@ -84,6 +101,7 @@ enum EquipmentType {    // to be updated when HIB finishes the ontology
     IR_CAMERA_VIDEO,
     WIFI,
     COLLISION_AVOIDANCE,
+	SPRAYER,			//This is jusy for Y2 purposes, the whole issue with Tarctor equipment needs to be solved for Y3
 }
 
 
@@ -103,6 +121,14 @@ struct Region {
 	1: list<Position> area,//The set of points defines the borders of the polygon AND the order to connect the points to get the edges
 }
 
+struct DetectionRegion{
+	1: i32 Id
+	2: i64 time,
+	3: Region location,
+	4: string label,
+}
+
+//BATTERY Also means FUEL
 struct Battery {
     1: double batteryCapacity,			//Capacity in Ah (last full capcity)
 	2: double batteryPercentage,		//Charge percentage on 0 to 1 range 	
@@ -120,8 +146,10 @@ struct StateVector {
 }
 
 struct Equipment {
-	1: EquipmentType type,
-	2: string name,
+	1: optional i32 id,
+	2: optional string isoId,
+	3: EquipmentType type,
+	4: string name,
 }
 
 struct Vehicle {
@@ -150,17 +178,19 @@ struct Task {
 	1: TaskTemplate taskTemplate,
 	2: i32 id,
     3: i32 missionId,
-	4: Region area,							// The area at which the task should be performed
-	5: double speed,                        // [m/s]
-	6: double altitude,                     // [m]
-	7: double range,                        // Not important for now.
-	8: i32 timeLapse,                       // [s] used for tasks where relevant. For example if a drone need to take photos every 5 seconds, etc
-	9: Orientation bearing,                 // Leave it for now
-	10: i64 startTime,                      // relative to the mission timeline
-	11: i64 endTime,                        // relative to the mission timeline
+	4: Region area,									// The area at which the task should be performed
+	5: double speed,                        		// [m/s]
+	6: double altitude,                     		// [m]
+	7: double range,                        		// Not important for now.
+	8: i32 timeLapse,                       		// [s] used for tasks where relevant. For example if a drone need to take photos every 5 seconds, etc
+	9: Orientation bearing,                 		// Leave it for now
+	10: i64 startTime,                      		// relative to the mission timeline
+	11: i64 endTime,                        		// relative to the mission timeline
 	12: TaskCommandStatus taskStatus,
 	13: i32 assignedVehicleId,
-	14: i32 parentTaskId,                   // This is used for distiguishing the tasks that are added by a planner to the mission. When a new task is added by the planner to a mission to fulfill another task, the ID of that other task must be copied here.
+	14: i32 parentTaskId,                   		// This is used for distiguishing the tasks that are added by a planner to the mission. When a new task is added by the planner to a mission to fulfill another task, the ID of that other task must be copied here.
+	15: optional list<PartField> partfields,		// List of partfields related to this task. Can be null.
+	16: optional list<TreatmentGrid> treatmentGrids,// List of treatment zones for this task. Can be null.
 }
 
 struct Command {
@@ -200,16 +230,17 @@ struct Alarm {
 }
 
 struct PartField {
-	1: i32 			  			partfieldId,
-	2: string 		  			name,
-	3: string 		  			crop,						//Should this be an enum or something?
-	4: list<Position> 			borderPoints,
-	5: optional TreatmentGrid	treatmentGrid,
+	1: i32 			partfieldId,
+	2: optional string	isoId,
+	3: string 		name,
+	4: Region		borderPoints,
 }
 
 struct TreatmentGrid{
 	1: i32			  Id,
-	2: i32			  numRows,
-	3: i32 			  numCols,
-	4: list<double>	  treatmentValue,					  //Assuming the grid cells are ordered from bottom left to top right, in a row-major order.
+	2: i32			  partfieldId,
+	3: i32			  taskId,
+	4: i32			  numRows,
+	5: i32 			  numCols,
+	6: list<double>	  treatmentValue,					  //Assuming the grid cells are ordered from bottom left to top right, in a row-major order.
 }

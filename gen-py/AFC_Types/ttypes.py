@@ -21,12 +21,18 @@ class VehicleType(object):
     RUAV = 1
     AGV = 2
     RGV = 3
+    UAV = 4
+    UGV = 5
+    Tractor = 6
 
     _VALUES_TO_NAMES = {
         0: "AUAV",
         1: "RUAV",
         2: "AGV",
         3: "RGV",
+        4: "UAV",
+        5: "UGV",
+        6: "Tractor",
     }
 
     _NAMES_TO_VALUES = {
@@ -34,6 +40,9 @@ class VehicleType(object):
         "RUAV": 1,
         "AGV": 2,
         "RGV": 3,
+        "UAV": 4,
+        "UGV": 5,
+        "Tractor": 6,
     }
 
 
@@ -165,6 +174,7 @@ class EquipmentType(object):
     IR_CAMERA_VIDEO = 4
     WIFI = 5
     COLLISION_AVOIDANCE = 6
+    SPRAYER = 7
 
     _VALUES_TO_NAMES = {
         0: "CAMERA_360",
@@ -174,6 +184,7 @@ class EquipmentType(object):
         4: "IR_CAMERA_VIDEO",
         5: "WIFI",
         6: "COLLISION_AVOIDANCE",
+        7: "SPRAYER",
     }
 
     _NAMES_TO_VALUES = {
@@ -184,6 +195,7 @@ class EquipmentType(object):
         "IR_CAMERA_VIDEO": 4,
         "WIFI": 5,
         "COLLISION_AVOIDANCE": 6,
+        "SPRAYER": 7,
     }
 
 
@@ -411,6 +423,97 @@ class Region(object):
         return not (self == other)
 
 
+class DetectionRegion(object):
+    """
+    Attributes:
+     - Id
+     - time
+     - location
+     - label
+
+    """
+
+
+    def __init__(self, Id=None, time=None, location=None, label=None,):
+        self.Id = Id
+        self.time = time
+        self.location = location
+        self.label = label
+
+    def read(self, iprot):
+        if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
+            iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
+            return
+        iprot.readStructBegin()
+        while True:
+            (fname, ftype, fid) = iprot.readFieldBegin()
+            if ftype == TType.STOP:
+                break
+            if fid == 1:
+                if ftype == TType.I32:
+                    self.Id = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 2:
+                if ftype == TType.I64:
+                    self.time = iprot.readI64()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 3:
+                if ftype == TType.STRUCT:
+                    self.location = Region()
+                    self.location.read(iprot)
+                else:
+                    iprot.skip(ftype)
+            elif fid == 4:
+                if ftype == TType.STRING:
+                    self.label = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            else:
+                iprot.skip(ftype)
+            iprot.readFieldEnd()
+        iprot.readStructEnd()
+
+    def write(self, oprot):
+        if oprot._fast_encode is not None and self.thrift_spec is not None:
+            oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
+            return
+        oprot.writeStructBegin('DetectionRegion')
+        if self.Id is not None:
+            oprot.writeFieldBegin('Id', TType.I32, 1)
+            oprot.writeI32(self.Id)
+            oprot.writeFieldEnd()
+        if self.time is not None:
+            oprot.writeFieldBegin('time', TType.I64, 2)
+            oprot.writeI64(self.time)
+            oprot.writeFieldEnd()
+        if self.location is not None:
+            oprot.writeFieldBegin('location', TType.STRUCT, 3)
+            self.location.write(oprot)
+            oprot.writeFieldEnd()
+        if self.label is not None:
+            oprot.writeFieldBegin('label', TType.STRING, 4)
+            oprot.writeString(self.label.encode('utf-8') if sys.version_info[0] == 2 else self.label)
+            oprot.writeFieldEnd()
+        oprot.writeFieldStop()
+        oprot.writeStructEnd()
+
+    def validate(self):
+        return
+
+    def __repr__(self):
+        L = ['%s=%r' % (key, value)
+             for key, value in self.__dict__.items()]
+        return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+    def __eq__(self, other):
+        return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+    def __ne__(self, other):
+        return not (self == other)
+
+
 class Battery(object):
     """
     Attributes:
@@ -608,13 +711,17 @@ class StateVector(object):
 class Equipment(object):
     """
     Attributes:
+     - id
+     - isoId
      - type
      - name
 
     """
 
 
-    def __init__(self, type=None, name=None,):
+    def __init__(self, id=None, isoId=None, type=None, name=None,):
+        self.id = id
+        self.isoId = isoId
         self.type = type
         self.name = name
 
@@ -629,10 +736,20 @@ class Equipment(object):
                 break
             if fid == 1:
                 if ftype == TType.I32:
-                    self.type = iprot.readI32()
+                    self.id = iprot.readI32()
                 else:
                     iprot.skip(ftype)
             elif fid == 2:
+                if ftype == TType.STRING:
+                    self.isoId = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 3:
+                if ftype == TType.I32:
+                    self.type = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 4:
                 if ftype == TType.STRING:
                     self.name = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
                 else:
@@ -647,12 +764,20 @@ class Equipment(object):
             oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
             return
         oprot.writeStructBegin('Equipment')
+        if self.id is not None:
+            oprot.writeFieldBegin('id', TType.I32, 1)
+            oprot.writeI32(self.id)
+            oprot.writeFieldEnd()
+        if self.isoId is not None:
+            oprot.writeFieldBegin('isoId', TType.STRING, 2)
+            oprot.writeString(self.isoId.encode('utf-8') if sys.version_info[0] == 2 else self.isoId)
+            oprot.writeFieldEnd()
         if self.type is not None:
-            oprot.writeFieldBegin('type', TType.I32, 1)
+            oprot.writeFieldBegin('type', TType.I32, 3)
             oprot.writeI32(self.type)
             oprot.writeFieldEnd()
         if self.name is not None:
-            oprot.writeFieldBegin('name', TType.STRING, 2)
+            oprot.writeFieldBegin('name', TType.STRING, 4)
             oprot.writeString(self.name.encode('utf-8') if sys.version_info[0] == 2 else self.name)
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
@@ -962,11 +1087,13 @@ class Task(object):
      - taskStatus
      - assignedVehicleId
      - parentTaskId
+     - partfields
+     - treatmentGrids
 
     """
 
 
-    def __init__(self, taskTemplate=None, id=None, missionId=None, area=None, speed=None, altitude=None, range=None, timeLapse=None, bearing=None, startTime=None, endTime=None, taskStatus=None, assignedVehicleId=None, parentTaskId=None,):
+    def __init__(self, taskTemplate=None, id=None, missionId=None, area=None, speed=None, altitude=None, range=None, timeLapse=None, bearing=None, startTime=None, endTime=None, taskStatus=None, assignedVehicleId=None, parentTaskId=None, partfields=None, treatmentGrids=None,):
         self.taskTemplate = taskTemplate
         self.id = id
         self.missionId = missionId
@@ -981,6 +1108,8 @@ class Task(object):
         self.taskStatus = taskStatus
         self.assignedVehicleId = assignedVehicleId
         self.parentTaskId = parentTaskId
+        self.partfields = partfields
+        self.treatmentGrids = treatmentGrids
 
     def read(self, iprot):
         if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
@@ -1064,6 +1193,28 @@ class Task(object):
                     self.parentTaskId = iprot.readI32()
                 else:
                     iprot.skip(ftype)
+            elif fid == 15:
+                if ftype == TType.LIST:
+                    self.partfields = []
+                    (_etype31, _size28) = iprot.readListBegin()
+                    for _i32 in range(_size28):
+                        _elem33 = PartField()
+                        _elem33.read(iprot)
+                        self.partfields.append(_elem33)
+                    iprot.readListEnd()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 16:
+                if ftype == TType.LIST:
+                    self.treatmentGrids = []
+                    (_etype37, _size34) = iprot.readListBegin()
+                    for _i38 in range(_size34):
+                        _elem39 = TreatmentGrid()
+                        _elem39.read(iprot)
+                        self.treatmentGrids.append(_elem39)
+                    iprot.readListEnd()
+                else:
+                    iprot.skip(ftype)
             else:
                 iprot.skip(ftype)
             iprot.readFieldEnd()
@@ -1129,6 +1280,20 @@ class Task(object):
         if self.parentTaskId is not None:
             oprot.writeFieldBegin('parentTaskId', TType.I32, 14)
             oprot.writeI32(self.parentTaskId)
+            oprot.writeFieldEnd()
+        if self.partfields is not None:
+            oprot.writeFieldBegin('partfields', TType.LIST, 15)
+            oprot.writeListBegin(TType.STRUCT, len(self.partfields))
+            for iter40 in self.partfields:
+                iter40.write(oprot)
+            oprot.writeListEnd()
+            oprot.writeFieldEnd()
+        if self.treatmentGrids is not None:
+            oprot.writeFieldBegin('treatmentGrids', TType.LIST, 16)
+            oprot.writeListBegin(TType.STRUCT, len(self.treatmentGrids))
+            for iter41 in self.treatmentGrids:
+                iter41.write(oprot)
+            oprot.writeListEnd()
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
         oprot.writeStructEnd()
@@ -1214,10 +1379,10 @@ class Command(object):
             elif fid == 7:
                 if ftype == TType.LIST:
                     self.params = []
-                    (_etype31, _size28) = iprot.readListBegin()
-                    for _i32 in range(_size28):
-                        _elem33 = iprot.readDouble()
-                        self.params.append(_elem33)
+                    (_etype45, _size42) = iprot.readListBegin()
+                    for _i46 in range(_size42):
+                        _elem47 = iprot.readDouble()
+                        self.params.append(_elem47)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
@@ -1258,8 +1423,8 @@ class Command(object):
         if self.params is not None:
             oprot.writeFieldBegin('params', TType.LIST, 7)
             oprot.writeListBegin(TType.DOUBLE, len(self.params))
-            for iter34 in self.params:
-                oprot.writeDouble(iter34)
+            for iter48 in self.params:
+                oprot.writeDouble(iter48)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
@@ -1401,55 +1566,55 @@ class Mission(object):
             elif fid == 4:
                 if ftype == TType.LIST:
                     self.forbiddenArea = []
-                    (_etype38, _size35) = iprot.readListBegin()
-                    for _i39 in range(_size35):
-                        _elem40 = Region()
-                        _elem40.read(iprot)
-                        self.forbiddenArea.append(_elem40)
+                    (_etype52, _size49) = iprot.readListBegin()
+                    for _i53 in range(_size49):
+                        _elem54 = Region()
+                        _elem54.read(iprot)
+                        self.forbiddenArea.append(_elem54)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
             elif fid == 5:
                 if ftype == TType.LIST:
                     self.homeLocation = []
-                    (_etype44, _size41) = iprot.readListBegin()
-                    for _i45 in range(_size41):
-                        _elem46 = Position()
-                        _elem46.read(iprot)
-                        self.homeLocation.append(_elem46)
+                    (_etype58, _size55) = iprot.readListBegin()
+                    for _i59 in range(_size55):
+                        _elem60 = Position()
+                        _elem60.read(iprot)
+                        self.homeLocation.append(_elem60)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
             elif fid == 6:
                 if ftype == TType.LIST:
                     self.tasks = []
-                    (_etype50, _size47) = iprot.readListBegin()
-                    for _i51 in range(_size47):
-                        _elem52 = Task()
-                        _elem52.read(iprot)
-                        self.tasks.append(_elem52)
+                    (_etype64, _size61) = iprot.readListBegin()
+                    for _i65 in range(_size61):
+                        _elem66 = Task()
+                        _elem66.read(iprot)
+                        self.tasks.append(_elem66)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
             elif fid == 7:
                 if ftype == TType.LIST:
                     self.vehicles = []
-                    (_etype56, _size53) = iprot.readListBegin()
-                    for _i57 in range(_size53):
-                        _elem58 = Vehicle()
-                        _elem58.read(iprot)
-                        self.vehicles.append(_elem58)
+                    (_etype70, _size67) = iprot.readListBegin()
+                    for _i71 in range(_size67):
+                        _elem72 = Vehicle()
+                        _elem72.read(iprot)
+                        self.vehicles.append(_elem72)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
             elif fid == 8:
                 if ftype == TType.LIST:
                     self.commands = []
-                    (_etype62, _size59) = iprot.readListBegin()
-                    for _i63 in range(_size59):
-                        _elem64 = Command()
-                        _elem64.read(iprot)
-                        self.commands.append(_elem64)
+                    (_etype76, _size73) = iprot.readListBegin()
+                    for _i77 in range(_size73):
+                        _elem78 = Command()
+                        _elem78.read(iprot)
+                        self.commands.append(_elem78)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
@@ -1478,36 +1643,36 @@ class Mission(object):
         if self.forbiddenArea is not None:
             oprot.writeFieldBegin('forbiddenArea', TType.LIST, 4)
             oprot.writeListBegin(TType.STRUCT, len(self.forbiddenArea))
-            for iter65 in self.forbiddenArea:
-                iter65.write(oprot)
+            for iter79 in self.forbiddenArea:
+                iter79.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.homeLocation is not None:
             oprot.writeFieldBegin('homeLocation', TType.LIST, 5)
             oprot.writeListBegin(TType.STRUCT, len(self.homeLocation))
-            for iter66 in self.homeLocation:
-                iter66.write(oprot)
+            for iter80 in self.homeLocation:
+                iter80.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.tasks is not None:
             oprot.writeFieldBegin('tasks', TType.LIST, 6)
             oprot.writeListBegin(TType.STRUCT, len(self.tasks))
-            for iter67 in self.tasks:
-                iter67.write(oprot)
+            for iter81 in self.tasks:
+                iter81.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.vehicles is not None:
             oprot.writeFieldBegin('vehicles', TType.LIST, 7)
             oprot.writeListBegin(TType.STRUCT, len(self.vehicles))
-            for iter68 in self.vehicles:
-                iter68.write(oprot)
+            for iter82 in self.vehicles:
+                iter82.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         if self.commands is not None:
             oprot.writeFieldBegin('commands', TType.LIST, 8)
             oprot.writeListBegin(TType.STRUCT, len(self.commands))
-            for iter69 in self.commands:
-                iter69.write(oprot)
+            for iter83 in self.commands:
+                iter83.write(oprot)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
@@ -1655,20 +1820,18 @@ class PartField(object):
     """
     Attributes:
      - partfieldId
+     - isoId
      - name
-     - crop
      - borderPoints
-     - treatmentGrid
 
     """
 
 
-    def __init__(self, partfieldId=None, name=None, crop=None, borderPoints=None, treatmentGrid=None,):
+    def __init__(self, partfieldId=None, isoId=None, name=None, borderPoints=None,):
         self.partfieldId = partfieldId
+        self.isoId = isoId
         self.name = name
-        self.crop = crop
         self.borderPoints = borderPoints
-        self.treatmentGrid = treatmentGrid
 
     def read(self, iprot):
         if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
@@ -1686,29 +1849,18 @@ class PartField(object):
                     iprot.skip(ftype)
             elif fid == 2:
                 if ftype == TType.STRING:
-                    self.name = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                    self.isoId = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
                 else:
                     iprot.skip(ftype)
             elif fid == 3:
                 if ftype == TType.STRING:
-                    self.crop = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                    self.name = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
                 else:
                     iprot.skip(ftype)
             elif fid == 4:
-                if ftype == TType.LIST:
-                    self.borderPoints = []
-                    (_etype73, _size70) = iprot.readListBegin()
-                    for _i74 in range(_size70):
-                        _elem75 = Position()
-                        _elem75.read(iprot)
-                        self.borderPoints.append(_elem75)
-                    iprot.readListEnd()
-                else:
-                    iprot.skip(ftype)
-            elif fid == 5:
                 if ftype == TType.STRUCT:
-                    self.treatmentGrid = TreatmentGrid()
-                    self.treatmentGrid.read(iprot)
+                    self.borderPoints = Region()
+                    self.borderPoints.read(iprot)
                 else:
                     iprot.skip(ftype)
             else:
@@ -1725,24 +1877,17 @@ class PartField(object):
             oprot.writeFieldBegin('partfieldId', TType.I32, 1)
             oprot.writeI32(self.partfieldId)
             oprot.writeFieldEnd()
+        if self.isoId is not None:
+            oprot.writeFieldBegin('isoId', TType.STRING, 2)
+            oprot.writeString(self.isoId.encode('utf-8') if sys.version_info[0] == 2 else self.isoId)
+            oprot.writeFieldEnd()
         if self.name is not None:
-            oprot.writeFieldBegin('name', TType.STRING, 2)
+            oprot.writeFieldBegin('name', TType.STRING, 3)
             oprot.writeString(self.name.encode('utf-8') if sys.version_info[0] == 2 else self.name)
             oprot.writeFieldEnd()
-        if self.crop is not None:
-            oprot.writeFieldBegin('crop', TType.STRING, 3)
-            oprot.writeString(self.crop.encode('utf-8') if sys.version_info[0] == 2 else self.crop)
-            oprot.writeFieldEnd()
         if self.borderPoints is not None:
-            oprot.writeFieldBegin('borderPoints', TType.LIST, 4)
-            oprot.writeListBegin(TType.STRUCT, len(self.borderPoints))
-            for iter76 in self.borderPoints:
-                iter76.write(oprot)
-            oprot.writeListEnd()
-            oprot.writeFieldEnd()
-        if self.treatmentGrid is not None:
-            oprot.writeFieldBegin('treatmentGrid', TType.STRUCT, 5)
-            self.treatmentGrid.write(oprot)
+            oprot.writeFieldBegin('borderPoints', TType.STRUCT, 4)
+            self.borderPoints.write(oprot)
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
         oprot.writeStructEnd()
@@ -1766,6 +1911,8 @@ class TreatmentGrid(object):
     """
     Attributes:
      - Id
+     - partfieldId
+     - taskId
      - numRows
      - numCols
      - treatmentValue
@@ -1773,8 +1920,10 @@ class TreatmentGrid(object):
     """
 
 
-    def __init__(self, Id=None, numRows=None, numCols=None, treatmentValue=None,):
+    def __init__(self, Id=None, partfieldId=None, taskId=None, numRows=None, numCols=None, treatmentValue=None,):
         self.Id = Id
+        self.partfieldId = partfieldId
+        self.taskId = taskId
         self.numRows = numRows
         self.numCols = numCols
         self.treatmentValue = treatmentValue
@@ -1795,21 +1944,31 @@ class TreatmentGrid(object):
                     iprot.skip(ftype)
             elif fid == 2:
                 if ftype == TType.I32:
-                    self.numRows = iprot.readI32()
+                    self.partfieldId = iprot.readI32()
                 else:
                     iprot.skip(ftype)
             elif fid == 3:
                 if ftype == TType.I32:
-                    self.numCols = iprot.readI32()
+                    self.taskId = iprot.readI32()
                 else:
                     iprot.skip(ftype)
             elif fid == 4:
+                if ftype == TType.I32:
+                    self.numRows = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 5:
+                if ftype == TType.I32:
+                    self.numCols = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 6:
                 if ftype == TType.LIST:
                     self.treatmentValue = []
-                    (_etype80, _size77) = iprot.readListBegin()
-                    for _i81 in range(_size77):
-                        _elem82 = iprot.readDouble()
-                        self.treatmentValue.append(_elem82)
+                    (_etype87, _size84) = iprot.readListBegin()
+                    for _i88 in range(_size84):
+                        _elem89 = iprot.readDouble()
+                        self.treatmentValue.append(_elem89)
                     iprot.readListEnd()
                 else:
                     iprot.skip(ftype)
@@ -1827,19 +1986,27 @@ class TreatmentGrid(object):
             oprot.writeFieldBegin('Id', TType.I32, 1)
             oprot.writeI32(self.Id)
             oprot.writeFieldEnd()
+        if self.partfieldId is not None:
+            oprot.writeFieldBegin('partfieldId', TType.I32, 2)
+            oprot.writeI32(self.partfieldId)
+            oprot.writeFieldEnd()
+        if self.taskId is not None:
+            oprot.writeFieldBegin('taskId', TType.I32, 3)
+            oprot.writeI32(self.taskId)
+            oprot.writeFieldEnd()
         if self.numRows is not None:
-            oprot.writeFieldBegin('numRows', TType.I32, 2)
+            oprot.writeFieldBegin('numRows', TType.I32, 4)
             oprot.writeI32(self.numRows)
             oprot.writeFieldEnd()
         if self.numCols is not None:
-            oprot.writeFieldBegin('numCols', TType.I32, 3)
+            oprot.writeFieldBegin('numCols', TType.I32, 5)
             oprot.writeI32(self.numCols)
             oprot.writeFieldEnd()
         if self.treatmentValue is not None:
-            oprot.writeFieldBegin('treatmentValue', TType.LIST, 4)
+            oprot.writeFieldBegin('treatmentValue', TType.LIST, 6)
             oprot.writeListBegin(TType.DOUBLE, len(self.treatmentValue))
-            for iter83 in self.treatmentValue:
-                oprot.writeDouble(iter83)
+            for iter90 in self.treatmentValue:
+                oprot.writeDouble(iter90)
             oprot.writeListEnd()
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
@@ -1877,6 +2044,14 @@ Region.thrift_spec = (
     None,  # 0
     (1, TType.LIST, 'area', (TType.STRUCT, [Position, None], False), None, ),  # 1
 )
+all_structs.append(DetectionRegion)
+DetectionRegion.thrift_spec = (
+    None,  # 0
+    (1, TType.I32, 'Id', None, None, ),  # 1
+    (2, TType.I64, 'time', None, None, ),  # 2
+    (3, TType.STRUCT, 'location', [Region, None], None, ),  # 3
+    (4, TType.STRING, 'label', 'UTF8', None, ),  # 4
+)
 all_structs.append(Battery)
 Battery.thrift_spec = (
     None,  # 0
@@ -1897,8 +2072,10 @@ StateVector.thrift_spec = (
 all_structs.append(Equipment)
 Equipment.thrift_spec = (
     None,  # 0
-    (1, TType.I32, 'type', None, None, ),  # 1
-    (2, TType.STRING, 'name', 'UTF8', None, ),  # 2
+    (1, TType.I32, 'id', None, None, ),  # 1
+    (2, TType.STRING, 'isoId', 'UTF8', None, ),  # 2
+    (3, TType.I32, 'type', None, None, ),  # 3
+    (4, TType.STRING, 'name', 'UTF8', None, ),  # 4
 )
 all_structs.append(Vehicle)
 Vehicle.thrift_spec = (
@@ -1939,6 +2116,8 @@ Task.thrift_spec = (
     (12, TType.I32, 'taskStatus', None, None, ),  # 12
     (13, TType.I32, 'assignedVehicleId', None, None, ),  # 13
     (14, TType.I32, 'parentTaskId', None, None, ),  # 14
+    (15, TType.LIST, 'partfields', (TType.STRUCT, [PartField, None], False), None, ),  # 15
+    (16, TType.LIST, 'treatmentGrids', (TType.STRUCT, [TreatmentGrid, None], False), None, ),  # 16
 )
 all_structs.append(Command)
 Command.thrift_spec = (
@@ -1984,18 +2163,19 @@ all_structs.append(PartField)
 PartField.thrift_spec = (
     None,  # 0
     (1, TType.I32, 'partfieldId', None, None, ),  # 1
-    (2, TType.STRING, 'name', 'UTF8', None, ),  # 2
-    (3, TType.STRING, 'crop', 'UTF8', None, ),  # 3
-    (4, TType.LIST, 'borderPoints', (TType.STRUCT, [Position, None], False), None, ),  # 4
-    (5, TType.STRUCT, 'treatmentGrid', [TreatmentGrid, None], None, ),  # 5
+    (2, TType.STRING, 'isoId', 'UTF8', None, ),  # 2
+    (3, TType.STRING, 'name', 'UTF8', None, ),  # 3
+    (4, TType.STRUCT, 'borderPoints', [Region, None], None, ),  # 4
 )
 all_structs.append(TreatmentGrid)
 TreatmentGrid.thrift_spec = (
     None,  # 0
     (1, TType.I32, 'Id', None, None, ),  # 1
-    (2, TType.I32, 'numRows', None, None, ),  # 2
-    (3, TType.I32, 'numCols', None, None, ),  # 3
-    (4, TType.LIST, 'treatmentValue', (TType.DOUBLE, None, False), None, ),  # 4
+    (2, TType.I32, 'partfieldId', None, None, ),  # 2
+    (3, TType.I32, 'taskId', None, None, ),  # 3
+    (4, TType.I32, 'numRows', None, None, ),  # 4
+    (5, TType.I32, 'numCols', None, None, ),  # 5
+    (6, TType.LIST, 'treatmentValue', (TType.DOUBLE, None, False), None, ),  # 6
 )
 fix_spec(all_structs)
 del all_structs
