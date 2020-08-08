@@ -109,16 +109,39 @@ class DssServiceHandler:
         except Exception as e:
             logger.info("[THRIFT SERVER]{}".format(e))
 
+    def sendIpAddress(self, ip):
+        # send ip to DSS
+        logger.info("[THRIFT SERVER] Receiving IP from MMT. IP:{}".format(ip))
+        splitted = ip.split('//')
+        if len(splitted) == 1:
+            # ip do not has http://
+            url  = 'http://' + ip.split(':')[0]
+            port = int(ip.split(':')[1])
+        else:
+            # ip do has http://
+            url  = ip.split(':')[0] + ':' + ip.split(':')[1]
+            port = int(ip.split(':')[2])
+
+        try:
+            dss_response = requests.get(url=globals.DSS_SENDIP_URL, params={"url": url, "port": port}, auth= ('admin','fakepass'))
+            dss_response.raise_for_status()
+        
+        except requests.exceptions.HTTPError as e:
+            logger.info("[THRIFT SERVER] /sendIpAddress not reached DSS {}".format(e))
+
+        except Exception as e:
+            logger.info("[THRIFT SERVER]{}".format(e))
+
 if __name__=="__main__":
     # run thrift server
     handler = DssServiceHandler()
     proc = DssService.Processor(handler)
 
-    trans_svr = TSocket.TServerSocket(port=globals.MMTPORT)
+    trans_svr = TSocket.TServerSocket(port=globals.MMT_SERVER_PORT)
     #trans_fac = TTransport.TBufferedTransportFactory()
     trans_fac = TTransport.TFramedTransportFactory()
     proto_fac = TBinaryProtocol.TBinaryProtocolFactory()
     server = TServer.TSimpleServer(proc, trans_svr, trans_fac, proto_fac)
-    logger.info("[THRIFT SERVER] Started in port {}".format(globals.MMTPORT))
-    print("[THRIFT SERVER] Started in port {}".format(globals.MMTPORT))
+    logger.info("[THRIFT SERVER] Started in port {}".format(globals.MMT_SERVER_PORT))
+    print("[THRIFT SERVER] Started in port {}".format(globals.MMT_SERVER_PORT))
     server.serve()

@@ -21,7 +21,9 @@ from flask_restful import Api
 #  as /flask/cly.py
 cwd = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(cwd)
-from api_classes import Register, Delete, List, Start, Stop, Status, Update, ConveyMMT
+
+
+from api_classes import Register, Delete, List, SendIP, Start, Stop, Status, Update, ConveyMMT, SendIP
 
 app = Flask(__name__)
 
@@ -35,15 +37,20 @@ api.add_resource(Stop, '/stop/<string:algorithm_id>')
 api.add_resource(Status, '/status/<string:algorithm_id>')
 api.add_resource(Update, '/update/<string:algorithm_id>')
 api.add_resource(ConveyMMT, '/conveymmt')
+api.add_resource(SendIP, '/sendip')
 
 # setting up logger
 logging.config.fileConfig('loggly-dss.conf')
 logger = logging.getLogger('DSS')
-
 logger.info("[DSS] Execution started")
 
 #TODO check if bd exists
 
+# Set MMT URL by default
+global MMT_URL
+global MMT_PORT
+MMT_URL = ''
+MMT_PORT = 0
 ## TO RUN FROM FLASH: python3 main.py
 app.run(host='0.0.0.0', port=globals.PORT, debug=True)
 

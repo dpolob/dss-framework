@@ -27,6 +27,7 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
     print('   getAlgorithmList()')
     print('  void startAlgorithm(i32 requestId, i32 algorithmId)')
     print('  AlgorithmStatus getAlgorithmStatus(i32 requestId, i32 algorithmId)')
+    print('  void sendIpAddress(string ip)')
     print('  string ping()')
     print('')
     sys.exit(0)
@@ -124,6 +125,12 @@ elif cmd == 'getAlgorithmStatus':
         print('getAlgorithmStatus requires 2 args')
         sys.exit(1)
     pp.pprint(client.getAlgorithmStatus(eval(args[0]), eval(args[1]),))
+
+elif cmd == 'sendIpAddress':
+    if len(args) != 1:
+        print('sendIpAddress requires 1 args')
+        sys.exit(1)
+    pp.pprint(client.sendIpAddress(args[0],))
 
 elif cmd == 'ping':
     if len(args) != 0:

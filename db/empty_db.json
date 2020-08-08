@@ -28,6 +28,10 @@
         "7": {
             "route": "Update",
             "permit": "user"
+        },
+        "8": {
+            "route": "SendIP",
+            "permit": "admin"
         }
     },
     "json_keys": {
@@ -59,5 +63,12 @@
     "algorithm_list": {
     },
     "request_table": {
+    },
+    "mmt_ip_table": {
+        "1": {
+            "id" : "mmt_address",
+            "url": "",
+            "port": 0
+         }
     }
 }

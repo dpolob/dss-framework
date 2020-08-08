@@ -40,6 +40,14 @@ class Iface(object):
         """
         pass
 
+    def sendIpAddress(self, ip):
+        """
+        Parameters:
+         - ip
+
+        """
+        pass
+
     def ping(self):
         pass
 
@@ -129,6 +137,22 @@ class Client(Iface):
             return result.success
         raise TApplicationException(TApplicationException.MISSING_RESULT, "getAlgorithmStatus failed: unknown result")
 
+    def sendIpAddress(self, ip):
+        """
+        Parameters:
+         - ip
+
+        """
+        self.send_sendIpAddress(ip)
+
+    def send_sendIpAddress(self, ip):
+        self._oprot.writeMessageBegin('sendIpAddress', TMessageType.ONEWAY, self._seqid)
+        args = sendIpAddress_args()
+        args.ip = ip
+        args.write(self._oprot)
+        self._oprot.writeMessageEnd()
+        self._oprot.trans.flush()
+
     def ping(self):
         self.send_ping()
         return self.recv_ping()
@@ -163,6 +187,7 @@ class Processor(Iface, TProcessor):
         self._processMap["getAlgorithmList"] = Processor.process_getAlgorithmList
         self._processMap["startAlgorithm"] = Processor.process_startAlgorithm
         self._processMap["getAlgorithmStatus"] = Processor.process_getAlgorithmStatus
+        self._processMap["sendIpAddress"] = Processor.process_sendIpAddress
         self._processMap["ping"] = Processor.process_ping
         self._on_message_begin = None
 
@@ -242,6 +267,17 @@ class Processor(Iface, TProcessor):
         result.write(oprot)
         oprot.writeMessageEnd()
         oprot.trans.flush()
+
+    def process_sendIpAddress(self, seqid, iprot, oprot):
+        args = sendIpAddress_args()
+        args.read(iprot)
+        iprot.readMessageEnd()
+        try:
+            self._handler.sendIpAddress(args.ip)
+        except TTransport.TTransportException:
+            raise
+        except Exception:
+            logging.exception('Exception in oneway handler')
 
     def process_ping(self, seqid, iprot, oprot):
         args = ping_args()
@@ -588,6 +624,68 @@ class getAlgorithmStatus_result(object):
 all_structs.append(getAlgorithmStatus_result)
 getAlgorithmStatus_result.thrift_spec = (
     (0, TType.I32, 'success', None, None, ),  # 0
+)
+
+
+class sendIpAddress_args(object):
+    """
+    Attributes:
+     - ip
+
+    """
+
+
+    def __init__(self, ip=None,):
+        self.ip = ip
+
+    def read(self, iprot):
+        if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
+            iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
+            return
+        iprot.readStructBegin()
+        while True:
+            (fname, ftype, fid) = iprot.readFieldBegin()
+            if ftype == TType.STOP:
+                break
+            if fid == 1:
+                if ftype == TType.STRING:
+                    self.ip = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            else:
+                iprot.skip(ftype)
+            iprot.readFieldEnd()
+        iprot.readStructEnd()
+
+    def write(self, oprot):
+        if oprot._fast_encode is not None and self.thrift_spec is not None:
+            oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
+            return
+        oprot.writeStructBegin('sendIpAddress_args')
+        if self.ip is not None:
+            oprot.writeFieldBegin('ip', TType.STRING, 1)
+            oprot.writeString(self.ip.encode('utf-8') if sys.version_info[0] == 2 else self.ip)
+            oprot.writeFieldEnd()
+        oprot.writeFieldStop()
+        oprot.writeStructEnd()
+
+    def validate(self):
+        return
+
+    def __repr__(self):
+        L = ['%s=%r' % (key, value)
+             for key, value in self.__dict__.items()]
+        return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+    def __eq__(self, other):
+        return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+    def __ne__(self, other):
+        return not (self == other)
+all_structs.append(sendIpAddress_args)
+sendIpAddress_args.thrift_spec = (
+    None,  # 0
+    (1, TType.STRING, 'ip', 'UTF8', None, ),  # 1
 )
 
 

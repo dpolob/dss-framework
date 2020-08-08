@@ -23,6 +23,8 @@ service DssService
 
     oneway void                           startAlgorithm    (1:i32 requestId, 2:i32 algorithmId),   //Asks the DSS Manager to start an algorithm. "requestId" is explained in the top comments. "algorithmId" is the Id of the algorithm to start
     AFC_DSS_Types.AlgorithmStatus         getAlgorithmStatus(1:i32 requestId, 2:i32 algorithmId),   //Asks the DSS Manager about the current status of an algorithm service. 
+
+    oneway void                           sendIpAddress     (1: string ip),                             
     
     //Bow to the Ping!
     string ping(),

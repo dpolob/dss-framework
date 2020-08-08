@@ -1,7 +1,8 @@
 # dockerfile for dss-framework
-FROM 16591354/dss-framework:latest
+#FROM 16591354/dss-framework:latest
+FROM python:3.6.10-slim-buster
 
-COPY . /afc_dss
+COPY . /afc_dss-thrift
 # empty database
 #COPY ./db/empty_db.json /afc_dss/db.json
 
@@ -22,6 +23,6 @@ COPY . /afc_dss
 #RUN make
 #RUN make install
 
-WORKDIR /afc_dss
+WORKDIR /afc_dss-thrift
 RUN pip3 install -r requeriments.txt
 CMD python3 mmt_thrift.py

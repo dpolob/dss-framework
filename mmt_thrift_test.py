@@ -4,7 +4,7 @@
 import sys
 sys.path.append('gen-py')
 from AFC_DSS import DssService
-
+from tinydb import TinyDB, Query
 from thrift.transport import TSocket
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
@@ -19,10 +19,11 @@ client = DssService.Client(proto)
 
 trans.open()
 
-msg = client.ping()
+#msg = client.ping()
 #msg = client.startAlgorithm(int(1111), int(83020))
 #msg = client.getAlgorithmStatus(int(1111), int(83020))
 #msg = client.getAlgorithmList()
+msg = client.sendIpAddress("http://192.168.1.1:9082")
 print("[CLIENT] recieved %s" % msg)
 
 #client.startAlgorithm(int(1111), int(40492))

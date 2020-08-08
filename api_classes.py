@@ -28,7 +28,6 @@ logger = logging.getLogger()
 # Enable HTTP Basic Authorization
 auth = HTTPBasicAuth()
 
-#DATABASE = './db/db.json'
 
 ## verify_password decorator
 #
@@ -157,6 +156,7 @@ class List(Resource):
 ## Start class
 #
 #  Implements code for Star API
+
 class Start(Resource):
 
     @auth.login_required  # check authorization
@@ -264,6 +264,7 @@ class Update(Resource):
         except Exception as e:
             logger.info("[Update API][UncaughtException] {}".format(e))
             return Response("Failure in DSS to update algorithm or algorithm do not exist. Check log", status=501, mimetype='text/plain')
+
 ## Status class
 #
 #  Implements code for Status API
@@ -318,6 +319,7 @@ class Status(Resource):
         except Exception as e:
             logger.info("[Status API][UncaughtException] {}".format(e))
             return Response("Failure in DSS to get status of algorithm. Check log", status=500, mimetype='text/plain')
+
 ## Stop class
 #
 #  Implements code for Stop API
@@ -368,6 +370,8 @@ class Stop(Resource):
             logger.info("[Stop API][UncaughtException] \
                         {}".format(e))
             return Response("Failure in DSS to start algorithm or algorithm do not exist. Check log", status=500, mimetype='text/plain')
+
+# TODO REMOVE AND PUT IN OTHER FILE!!!
 ## EntryPoint class
 #
 #  Implements the queries to the algorithms
@@ -462,6 +466,9 @@ class EntryPoint():
         logger.info("[STATUS_ALG]Algorithm status: {}. Info: {}".format(data_from_alg['status'], data_from_alg['msg']))
         return data_from_alg
 
+## ConveyMMT class
+#
+#  Send to MMT
 class ConveyMMT(Resource):
 
     ## Post function
@@ -519,3 +526,30 @@ class ConveyMMT(Resource):
             logger.info("[Response API][UncaughtException] {}".format(e))
             return Response("Failure in response of algorithm. Check log.", status=500, mimetype='text/plain')
 
+## SendIP class
+#
+#  Get MMT IP
+class SendIP(Resource):
+    @auth.login_required  # check authorization
+    @requires_permission("SendIP")  # check permission
+    ## Post function
+    #  Get the IP and store in database
+    def get(self):
+        # get data from params
+        try:
+            db = TinyDB(globals.DATABASE)
+            table= db.table('mmt_ip_table')  # switch to table
+            query = Query()
+            if not table.update({"url": request.args.get('url', type=str), "port": request.args.get('port', default=9096, type=int)}, query.id == "mmt_address"):
+                raise errors.DBAlgorithmUpdateException()
+            
+            logger.info("[SendIP API] MMT URL updated")
+            return Response("MMT URL updated", status=200, mimetype='text/plain')
+
+        except (errors.DBAlgorithmUpdateException):
+            logger.info("[SendIP API][DBAlgorithmUpdateException] Failure in DSS to update MMT URL. Code 500 sent")
+            return Response("Failure in DSS to update MMT URL", status=500, mimetype='text/plain')
+        
+        except Exception as e:
+            logger.info("[SendIP API][UncaughtException] {}".format(e))
+            return Response("Failure in DSS to update MMT URL. Check log", status=500, mimetype='text/plain')

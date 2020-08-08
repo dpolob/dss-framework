@@ -7,10 +7,10 @@ services:
       context: .
     ports:
       - '5000:5000' # for api rest
-# dss-thrift:
-#   container_name: dss-thrift
-#    build:
-#      dockerfile: dockerfile-dss-thrift-repo
-#      context: .
-#    ports:
-#      - '5001:5001' # for thrift
+  dss-thrift:
+    container_name: dss-thrift
+    build:
+      dockerfile: dockerfile-dss-thrift-repo
+      context: .
+    ports:
+      - '5001:5001' # for thrift

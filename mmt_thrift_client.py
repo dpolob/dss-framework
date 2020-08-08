@@ -1,10 +1,9 @@
 ## @imports
 import errors
 import logging 
-from json_manipulation import check_jsonkeys, change_status
-from tinydb import TinyDB, Query
-import json
 import globals
+from tinydb import TinyDB, Query
+
 
 
 ## @imports for Thrift
@@ -29,10 +28,16 @@ logger = logging.getLogger()
 
 class MmtServiceSender:
     def __init__(self, data, request_id, algorithm_id):
+        # search for mmt in database
+        db = TinyDB(globals.DATABASE)
+        table= db.table('mmt_ip_table')  # switch to table
+        query = Query()
+        result = table.search(query.id == "mmt_address")
+
         self.data = data
         self.algorithm_id = int(algorithm_id)
         self.request_id = int(request_id)
-        self.trans_sender = TSocket.TSocket(globals.MMTURL, globals.MMTPORT)
+        self.trans_sender = TSocket.TSocket(result[0]["url"], result[0]["port"])
         #self.trans_sender = TTransport.TBufferedTransport(self.trans_sender)
         self.trans_sender = TTransport.TFramedTransport(self.trans_sender)
         self.proto_sender = TBinaryProtocol.TBinaryProtocol(self.trans_sender)
