@@ -10,7 +10,7 @@ cwd = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.path.abspath(cwd + '/db/db.json')
 
 # DSS 
-DSS_LOCAL = True
+DSS_LOCAL = False
 if DSS_LOCAL:
     DSS_BASE ='http://0.0.0.0:' +str(PORT)
 else:
